@@ -155,7 +155,6 @@ If a wired internet connection is not available on-site. A modem/router such as 
 
   Shutdown the IFCB and disconnect from monitor. Connect using a remote connection through VNC and make sure the IFCB is not experiencing "small window VNC connection" issues. This issue sometimes shows up after several reboots of the system and can be fixed by attaching a small dongle on the VGA connector available from McLane labs.
 
-  
 
 ## 4.2. Cellular modem set up
 
@@ -244,7 +243,51 @@ If using a backup power source like a UPS with a network management card it can 
 
 ![email logging 4](README.assets/email logging 4.PNG)
 
-## 4.2. Canning the IFCB
+## 4.4. Router set up (For offshore cruise deployment or when connection to internet is not possible)
+
+- Connect power cable to router and attach Ethernet cable to laptop.
+
+- With a laptop or phone, connect to Netgear wireless network. If using an already configured router from our lab, use the user name and p/w provided with the router to login to the Wi-Fi. If using an un-configured router connect to it using the default NetGearXX  with pw printed on the underside of the unit.
+
+- After connecting you laptop, login to the router configuration page. In a browser page, go to: 192.168.1.1 
+
+  ![Advanced attached devies](README.assets/Advanced attached devies.PNG)
+
+- Click on the “Advanced” tab and then “Administration and then “Attached Devices”. Any pre-set devices will show up under Wired or Wireless devices. 
+
+  ![Advanced attached devies2](README.assets/Advanced attached devies2.jpg)
+
+- To add new device click on “Access Control” in the upper right corner. 
+
+  ![Access control- add devices](README.assets/Access control- add devices.PNG)
+
+- Under Access Rules make sure “Add all new devices to connect” is selected. Below this will appear a list of all devices that are currently allowed to connect. If your device does not appear in this menu click on “Add”.
+
+  ![Add new devices landing page](README.assets/Add new devices landing page.PNG)
+
+- On the next page add the MAC address of your device and set a device name for your device. Click **Apply** 
+
+- Navigate to the **WPS wizard tab> Setup> LAN setup** and click on **Add** 
+
+  ![LAN reservation MAC address](README.assets/LAN reservation MAC address.PNG)
+
+- Set an IP address in the range of 192.168.1.2 to192.168.1.255 for your device, enter the MAC address and Device name ![LAN reservation2](README.assets/LAN reservation2.PNG)and click **Add.** 
+
+  
+
+- VNC has ports 5800 to 5900 available and when using the Linux OS and VNC to access the IFCB these ports have to be made available to the device’s IP address. Navigate to Advanced setup>Port forwarding/Port triggering 
+
+- Select Port forwarding for service type. Enter the IP address you have assigned to your device and click Add.
+
+- Set 5800-5900 under external starting port and internal starting port and name the Service “VNC”. Save changes and exit out of the router browser page. The router is now set up for use with the IFCB. 
+
+  ![Adding VNC ports](README.assets/Adding VNC ports.PNG)
+
+- ·Make sure the IFCB Ethernet cable is plugged into the router. Make sure you are connected to the router either wirelessly through wi-fi or wired through an Ethernet connection.
+
+- 
+
+## 4.5. Canning the IFCB
 
 - Once the IFCB is ready for canning connect to the IFCB using Windows Remote Desktop Connection. 
 
@@ -353,7 +396,7 @@ If using a backup power source like a UPS with a network management card it can 
 
 - Once the IFCB is secured in place and continuous water supply has been ensured follow the instructions below. (For dockside submerged operation start the IFCB before submerging in water, but only start sampling once IFCB has been submerged and secured).
 
-- Connect the IFCB Ethernet cable to the MP70, connect the IFCB power cable to the power box. The IFCB should start up automatically and can be accessed using Windows Remote Desktop when using the Windows OS and VNC viewer when using the Linux OS.
+- Connect the IFCB Ethernet cable to the router/modem, connect the IFCB power cable to the power box. The IFCB should start up automatically and can be accessed using Windows Remote Desktop when using the Windows OS and VNC viewer when using the Linux OS.
 
 - Logging into the IFCB: The username of all IFCBs is set to "ifcb" by default and the password to log into them is set to the serial number assigned to the IFCB. Remote desktop requires the IP address of the IFCB (LAN/WAN), the username (ifcb), as well as the serial number (MLXXXXX-01) to log in. VNC only requires the IP address (WAN/LAN) and serial number password to log in.
 
@@ -393,7 +436,87 @@ If using a backup power source like a UPS with a network management card it can 
 
 ### 6.1.2. Basic Operations using the Linux OS
 
+- The IFCBacquire software in Linux has three main components: the server, Host, and the WebUI
 
+  ![Linux IFCBacquire](README.assets/Linux IFCBacquire.png)
+
+- Once the IFCB is secured in place and continuous water supply has been ensured follow the instructions below.
+
+- Connect the IFCB Ethernet cable to the router/modem, connect the IFCB power cable to the power box. The IFCB should start up automatically and can be accessed using  VNC viewer when using the Linux OS.
+
+- Logging into the IFCB when using modem: VNC only requires the IP address (WAN/LAN) and serial number password to log in.
+
+  - LAN connection: When connected directly to the MP70 using wired/wireless connection. Use local IP address 192.168.13.xxx to connect to the IFCB over Remote Desktop/VNC  (setting up the IP address for IFCBs is detailed in section 4.2).
+
+  - WAN connection: When not connected to the MP70 locally or when you are remote to the site of the MP70, connect using remote desktop/VNC with the IP address associated with SIM card used in Modem with port number assigned to IFCB, e.g. 166.xxx.xx.42:(IFCB external port number).
+
+- Logging into IFCB using router:
+
+  - Connection to the Netgear router is possible using its local network by signing into the Wi-Fi using a laptop. 
+
+  - Open a browser window on a laptop connected to the Wi-Fi network of the browser and use the IP address of the router: 192.168.1.1 to connect to the Router where you can check if the IFCB is on the network. 
+
+    ![Landing page](README.assets/Landing page.PNG)
+
+- The IFCB will have started up in the Linux OS. Open VNC on the same laptop to connect to the IFCB using the IP address i.e. http://192.168.1.165, and the password which is the serial number assigned by McLane (i.e. MLxxxxx-01), which is printed on the top of the IFCB.
+
+- The IFCBacquire software will have started up 60 seconds after boot up and the main debug windows will be up on the desktop. Click on **WebUI** to start up the full user interface in Chromium, if it has not already started up. 
+
+  ![WebUI](README.assets/WebUI.jpg)
+
+- Navigate to the **Hardware** tab and note the **humidity and temperature**. This will have changed after transport from the lab (Fig. 15). Also make sure the **Live** button above humidity and temp is not highlighted since this makes the software die L The software updates the temperature and humidity readings every minute or so. Both of these readings are relative to the initial readings and will fluctuate according to the external temperature, and temperature of the water being samples. If temperature exceeds 35C the IFCB should be turned off as this can damage the CPU. If humidity rises more than 10% from initial reading it might indicate a leak in the reagent bags/syringe/internal fluidics and the IFCB should be monitored. Turn off the IFCB if humidity exceeds 60%.
+
+  ![Hardware tab_T+H](README.assets/Hardware tab_T+H.jpg)
+
+- In the **Hardware** tab check if the **Laser, Camera and Pump 1 or 2** are set to **ON**. Check if **Flashlamp** is set to **ON**. Only one pump should be on at any given time, the other one is designated as the back up pump.
+
+  ![Hardware tab_on+off](README.assets/Hardware tab_on+off.jpg)
+
+- Navigate to the **Fluids** tab and check if **Refill after debubble and debubble     with sample** are selected. Check if **sample volume** to is set to **5.0** and **Beads interval**     to **60** (Fig. 17). If making any     changes in this tab make sure to click **Set** to apply changes.
+
+  ![Fluids settings](README.assets/Fluids settings.jpg)
+
+- Set **Samples** to appropriate number (10,000 is upper limit, sampling at the rate of ~60 samples/day when sampling volume is set to 5 ml). Click **set**.
+
+  ![Sample num](README.assets/Sample num.jpg)
+
+- Start acquiring samples by clicking on **Start acquisition**. Make sure the intake and exhaust lines are submerged in sampling water before hitting start.
+
+  ![Start acqui](README.assets/Start acqui.jpg)
+
+- Navigate to **View** and **select Images, Triggers, Valve, Activity, Syringe**. When selected these will be highlighted blue and the Camera view screen will show images of ROIs once the IFCB starts sampling after a 3 minute debubble run. 
+
+  ![view](README.assets/view.jpg)
+
+- The status of the syringe and valve will be visible in the lower right corner. The sample run will start once the syringe has filled up to 5 ml volume and the valve is at Needle position.
+
+- Look at the ROIs in the Camera window and make sure they are well focused. Focus can be adjusted by very small increments using the **focus** controls. Use the Large step << and >> icons to move in one direction at a time to adjust focus.
+
+  ![focus](README.assets/focus.jpg)
+
+- Once the IFCB is set up for sampling uncheck the Images, Valve and Syringe icons to save CPU space.
+
+- Navigate to the **triggers tab** and check if you are getting a **zero ROI** every 15-20 ROIs and an fps between 3.00 to 11.00 
+
+  ![triggers](README.assets/triggers-16305276933417.jpg)
+
+- The **PMTB setting**s under the **Hardware tab** can be bumped up to 0.70-0.75 to make sure the laser sensitivity is optimum. Click **set** under the PMT settings after making any changes to these specific settings.
+
+  ![PMTB](README.assets/PMTB.jpg)
+
+- If needed to move from PMTB to PMTA in open ocean waters navigate to Hardware tab and select **On** next to PMTA and bump up PMTA settings to the 0.65-0.70 until you start seeing a zero ROI under **Triggers** every 20 triggers. Turn PMTB to **Off** and click **set**.
+
+  ![OMTA](README.assets/OMTA.jpg)
+
+- The IFCB will need to be checked on every 24 hours or so. Main things to keep an eye on is the humidity and temperature, check images are still in focus and make sure the flow cell is not clogged. See end of document for daily checklist.
+
+- The graphing function takes a lot out of the CPU, but is useful to keep an eye on the flow. Navigate to the **View tab** and select **graphs**. Navigate to **Graphs** next to the **Camera tab**, and navigate to tab **RoiXY. The** ROIs should be triggering within the area in the blue box in next figure.
+
+  ![Graphs](README.assets/Graphs.PNG)
+
+- If using the index file to connect to the IFCB, open the index file on the laptop that is connected to the router wi-fi and use the IP address and port number 8092 as **Server**. E.g. for our router this will be http://192.xxx.x.xx5:8092 and IFCB number xxx. Then click on **connect**. The index file looks identical to the WebUI, but having both connected to the IFCB at once can cause it to crash.
+
+  ![index file](README.assets/index file.jpg)
 
 ## 6.2. Stopping the IFCB after sampling
 
