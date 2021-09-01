@@ -351,3 +351,350 @@ If using a backup power source like a UPS with a network management card it can 
 
 ## 6.1. Starting up the IFCB 
 
+- Once the IFCB is secured in place and continuous water supply has been ensured follow the instructions below. (For dockside submerged operation start the IFCB before submerging in water, but only start sampling once IFCB has been submerged and secured).
+
+- Connect the IFCB Ethernet cable to the MP70, connect the IFCB power cable to the power box. The IFCB should start up automatically and can be accessed using Windows Remote Desktop when using the Windows OS and VNC viewer when using the Linux OS.
+
+- Logging into the IFCB: The username of all IFCBs is set to "ifcb" by default and the password to log into them is set to the serial number assigned to the IFCB. Remote desktop requires the IP address of the IFCB (LAN/WAN), the username (ifcb), as well as the serial number (MLXXXXX-01) to log in. VNC only requires the IP address (WAN/LAN) and serial number password to log in.
+
+  - LAN connection: When connected directly to the MP70 using wired/wireless connection. Use local IP address 192.168.13.xxx to connect to the IFCB over Remote Desktop/VNC  (setting up the IP address for IFCBs is detailed in section 4.2).
+
+  - WAN connection: When not connected to the MP70 locally or when you are remote to the site of the MP70, connect using remote desktop/VNC with the IP address associated with SIM card used in Modem with port number assigned to IFCB, e.g. 166.xxx.xx.42:(IFCB external port number).
+  
+- Checking IFCB connection to MP70: Connection to the MP70 is possible using its local network by signing into the Wi-Fi, or by remote connection. Open a browser window and connect to the MP70 using the local IP i.e.192.168.13.31 or the WAN IP  i.e. 166.xx.xx.xx:9443 to connect to the MP70’s ACEmanager where you can check if the IFCB is on the network. Navigate to the **Status** tab > **LAN IP/MAC** table and the connected IFCB should be visible in the table and identifiable by either its IP or MAC address.
+
+  ![IFCB4](README.assets/IFCB4.PNG)
+  
+- Once connected to the IFCB using remote desktop/VNC the IFCBacquire software will have started up 60 seconds after boot up. If the syringe has been set to zero then the software should start up without the IFCB starting sampling in the Windows OS. In Linux unless autostart is selected in the menu the IFCB will not start sampling automatically regardless of the number of syringes set. Introducing air into the IFCB should be avoided as it requires many samples to work its way out and will hamper imaging and flow.
+
+### 6.1.1. Basic operations using the Windows OS
+
+- Once connected by remote desktop the IFCBacquire software will have started up 60 seconds after Windows boot up. If the syringe has been set to zero then the software should start up without the IFCB starting sampling. Introducing air into the IFCB should be avoided as it requires many samples to work its way out and will hamper imaging and flow.
+
+- Navigate to the **Hardware** tab and note the **humidity and temperature**. This will have changed after transport from the lab.
+
+  ![Hardware tab_temphu](README.assets/Hardware tab_temphu.jpg)
+
+- In the **Hardware** tab check the PMT settings: PMTA should be set to 0.45-0.65, PMTB should be set to 0.45-0.70. Trig A and Trig B should be set between 0.120- 0.140. These settings are very subjective to the environment being sampled, and also on the laser/PMT hardware individual to each instrument. The settings should be set to a range that is giving uniform PMT signals across the flow cell and producing a zero ROI every 12-15 triggers.
+
+- In the **Hardware** tab check if the **Laser, Camera and Pump 1 or 2** are set to **ON**. Check if **Flashlamp** is set to **ON**.
+
+- Navigate to the **Fluids** tab and check if **Active, Refill after debubble and debubble with sample** are selected. Set sample volume to 5.0 and Beads interval to 60.
+
+  ![Fluids tab](README.assets/Fluids tab.PNG)
+
+- Navigate to the **Camera** tab and set **# syringes** to appropriate number (10,000 if long term sampling, sampling at the rate of ~60 samples/day). Select **Output files, Debug and Blob analysis**.
+
+- If setting up a dockside submerged IFCB at this point lower the IFCB into the water and secure vertically at appropriate height to ensure that it remains submerged even at low tide.
+
+  ![Camera](README.assets/Camera.png)
+
+- Start acquiring samples and note the fps rate in the **Camera** tab. It should be between 0.2-0.8 in ambient water that is not experiencing a bloom (Fig. 27). Navigate to the **Hardware** tab and note the humidity and temperature for the duration of two samples. The temperature inside the IFCB will fall/rise according to the ambient water temperature, but should not change more than a few units post-canning. Uncheck **View Images** after monitoring flow and images for a few samples to free up processing speed. Refer to section 8 and 9 for daily check in and long-term maintenance. 
+
+### 6.1.2. Basic Operations using the Linux OS
+
+
+
+## 6.2. Stopping the IFCB after sampling
+
+- Cleaning should be performed each time the IFCB has been used for an extended period of time, or between sampling different environments to avoid carryover. To clean the instrument run the following steps twice, repeating for each pump that was in use for samping. Note: Make sure the intake tube is submerged in fluid or appropriate salinity (or MQ water) since the IFCB will need fluid for flushing after a run of cleaning agents.
+
+  Under the **Fluids** tab click **Bleach** to run the detergent solution of 1% Terg-a-zyme and 5% Contrad.
+
+  Under the fluids tab click **Biocide** to run the Sodium Azide solution.
+
+  Leave the pumps running for 15-20 mins after these cleaning runs without running fresh samples.
+
+  Note: If cleaning has to be done after a long term installation this can be done by sampling the cleaning solutions to the intake tube in case reagent bags have been depleted.
+
+- Make sure to wait for acquisition to finish or “**Stop acquisition**” or the sample file will not be saved. Set **# syringes** to **0** and close IFCBacquire using the emergency stop button.
+- Turn off IFCB from the start menu.
+
+- Follow the steps in the Mclane labs manual for long-term storage of the IFCB without sampling to avoid water stains on the flow cell or salt buildup.
+
+# 7. IFCB routine assessment, daily check-ins
+
+## 7.1. Daily Check in
+
+- Check that the acquisition is running and output files box is checked.
+
+- A daily check in to monitor the temperature and humidity inside the pressure housing is good practice. The humidity after canning should stay consistent within a few percentage points, a large rise in humidity is an indication of a leak and should be addressed immediately. Temperature over 40 ℃ inside the pressure housing of the IFCB can result in damage to the computer stack and should be addressed immediately.
+
+- Check images on the dashboard for:
+
+  - Position in flow cell: Are the ROI’s being captured in the optimum part of the flow cell
+
+  <img src="README.assets/OptimumRoisPos.png" alt="OptimumRoisPos" style="zoom:50%;" /><img src="README.assets/OptimumRoisPos2.png" alt="OptimumRoisPos2" style="zoom: 67%;" />
+
+  - Focus: Are the images sharp and in focus?
+  - Lighting: Any changes to the lighting can be an issue with the camera
+  - Bubbles/debris in flow cell
+  - Uncheck **View images** after check in.
+
+- A check in to monitor the fps rate and ROIs/trigger is also good practice.
+
+  - If many zero ROI’s are being observed or multiple ROI’s are being captured for every trigger it may indicate issues with debris/bubble in the flow cell, ineffective filtering of large particles that can clog up the flow.
+
+  - Low fps rate (0-0.6) can indicate inefficient PMT settings. PMTB settings should be adjusted to a suitable value to get a zero ROI every 15-20 images.
+
+- A visual inspection for buildup on the filter tip on the intake should be performed, biofouling of the tip can lead to clogging of the flow cell eventually.
+- The Windows 10 automatic updates can cause reboot of the OS after updates are installed. As long as Task Scheduler is set up to auto-start IFCBacquire 60 seconds after reboot the IFCB should start sampling again after a reboot event. It is good practice to log in to the instrument and check these logs from time to time. 
+  - Search for “Run” in the Windows Start menu, type “eventvwr.msc” into Run and click OK to open Event Viewer.
+  - In the left pane of Event viewer, Under “Windows Logs” right-click on “System”, Click on “Filter current log”.
+  - In the new dialog that opens enter 41, 1074, 6006, 6008 in the field called **All Event IDs**. Click OK.
+  - This will bring up a log of all reboot/shutdown events and can be used to monitor any interruption in IFCB sampling.
+
+- If frequent reboots become an issue automatic updates can be paused temporarily by going into Start>Settings>Update & Security>Advanced options> Pause updates. This can pause automatic updates for up to 35 days.
+
+- If more control is required over when updates are installed and the system rebooted, settings can be changed in Group Policy settings.
+
+  - Search for gpedit in Windows search bar, open Group Policy editor
+
+  - Computer Configuration\Administrative Templates\Windows Components\Windows Update
+
+  - Double-click the Configure Automatic Updates policy on the right side.
+
+  - Check the Enable option to turn on the policy.
+
+  - In the "Options" section, you'll find several options to configure automatic updates, including:
+
+    2 - Notify for download and auto install.
+
+    3 - Auto download and notify for install.
+
+    4 - Auto download and schedule the install.
+
+    5 - Allow local admin to choose setting.
+
+    The closest option to disable automatic updates is the 2 - Notify for download and auto install option, but you can select any other option that best fits your situation.
+
+  - Click the Apply button.
+  - Click the OK button.
+  - After completing the steps, updates will stop downloading automatically. However, when a new update becomes available, you'll receive a notification to download and install updates manually from the Windows Update settings page.
+  - Monthly installation of updates should be scheduled and the system should be allowed a controlled reboot.
+
+## 7.2. Long-term check-ins
+
+- Biofouling can occur on the nitex filter tip of the IFCB on long-term deployments. Selecting **Back flush with sample** under the **Fluids** tab can help to clear clogs on the filter tip on remote installations. Installations with regular access should be monitored for biofouling regularly.
+- Data being stored on the hard disk of the IFCB should be monitored regularly. If the hard disk runs out of space IFCBacquire will not collect any more samples. Data should be periodically moved off the IFCB to avoid interruptions.
+
+# 8. IFCB common issues, known problems and how to manage
+
+## **Issue: Sudden spike in image files on dashboard, duplicate images, same spot being captured as ROI:**
+
+<img src="README.assets/Example bad imaging.png" alt="Example bad imaging" style="zoom:50%;" /><img src="README.assets/Sudden spike.png" alt="Sudden spike" style="zoom:50%;" />
+
+Solution: Clean the flow cell
+
+\-    Option 1: For Remote installations 
+
+a.   Stop the IFCB sampling, go into the **Fluids** tab and run the **Bleach** cycle, stop the **Bleach** cycle using the emergency stop function before the detergent solution is pushed back out of the sample intake. Then use the “**Sample to Cone**” command under the **Fluids** tab to push the detergent to the flow cell. Leave the detergent in the flow cell for 15 mins. Run a few **fast samples** and alternate with **debubble** cycles.
+
+\-    Option 2: If IFCB is accessible:
+
+a.   Run a sample of 2% Micro-90 and when the sample reaches the flow cell, turn the pumps off and pause sample and let it sit in the flow cell for 15-20 mins. **Initialize** sample (to empty syringe) and run 2-3 samples with **fast sample run** selected. Perform several alternating deubbling and “run sample fast” cycles. (Taylor Crockford from Google user group). 
+
+b.   Run samples of 10% HCl through the sample intake tube alternating with fast runs of filtered sea water or MQ water depending on salinity of sheath fluid.
+
+c.   If the clog is very stubborn a Tee connector with some PEEK tubing can be attached to where the flow cell connects to manually run detergent through the flow cell (See instructions under Stains on flow cell).
+
+## **Issue: IFCB sampled air, position of ROI’s is random (all over flow cell)**
+
+Solution: Bad ROI position can be often caused by poor flow or air in the fluidics. This can be checked in the dashboard by setting the view to “plot” and looking at the position of the ROI’s being captured. Debubbling can get rid of small amounts of air in the fluidics, but running many back to back debubbling cycles can cause degassing in the instrument. Taylor Crockford recommends: running alternate debubble cycles and a sample run with “fast factor” selected and set to 15.
+
+This issue can also be caused by a small air bubble stuck in the flow cell. Running a sample of 2% Micro-90 solution can help by changing the surface tension inside the flow cell/cone.
+
+\-    Turn off sheath and have the IFCB sample 1-2 ml of 2% Micro90 solution.
+
+\-    With the sheath still off, run 2 debubble cycles.
+
+\-    Start a sample with water (matching salinity of cartridge) on the fast setting and turn on the sheath after the sample starts running through the flow cell.
+
+\-    Run 1 debubble cycle with the sheath on
+
+\-    Run 5-6 samples of 5 ml filtered seawater/MQ water.
+
+## **Issue: Acquisition restarts with no/few ROI’s or after incomplete** 
+
+Solution: The default time for each sample run is 90 secs and if no triggers are received the system times out and discards the current sample. Double check if sample intake tubing is correctly positioned and getting adequate supply, run a sample of beads and check the position of the ROI’s. This is often an indication that the horizontal laser alignment is off. Can find further discussion on this issue in the IFCB user group on Google groups and the University of Maine IFCB protocol.
+
+## **Issue: Stains on flow cell**
+
+Solution: For IFCB’s that have been sitting dry/stored without running samples for a long time water spots and stains on the flow cell can become an issue. A solution is to rinse with detergent or a glass cleaner like 10% HCl solution in small samples of 1 ml and monitor the flow cell for improvements. 
+
+For stubborn stains a dilute solution of Micro90 with MQ water can be used to manually clean the flow cell:
+
+\-    Shut down the IFCB off and remove power cord and lay the IFCB on its side with the laser and flow cell facing upwards. The IFCB may need to be braced by something to keep it in a stable position.
+
+\-    Remove the focus motor assembly, circuit board and laser cover.
+
+![FlowCellClean_1](README.assets/FlowCellClean_1.png)
+
+\-    Attach a syringe filled with 60 ml detergent solution nd 40 ml air to the top of the flow cell (Figure ), attach a second similar syringe to the Tee connector under the flow cell. Cap off disconnected connectors with black caps. Use paper towels or other absorbent materials to protect the housekeeping board and other circuitry in case of leaks.
+
+![FlowcellClean2](README.assets/FlowcellClean2.jpg)
+
+\-    Use the syringes to swish the detergent solution back and forth through the flow cell. The air in the syringes help create shear to remove stubborn stains.
+
+![Flowcellclean3](README.assets/Flowcellclean3.jpg)
+
+\-    Leave some detergent solution in the flow cell to soak the walls of the flow cell for very stubborn stains. The angle of the IFCB should be changed intermittently so all the surfaces of the flow cell can be soaked in the detergent solution.
+
+Note: Swishing around the detergent will cause some of the detergent solution to come out of the exhaust of the IFCB. Place a container to catch this detergent waste, or disconnect the exhaust connection from the Tee connection.
+
+\-    Once the flow cell has been sufficiently cleaned by this method set the IFCB up vertically for sampling again and run a few 1 ml samples of detergent solution through the intake alternating with debubble samples to clean any obstructions in the needle leading to the flow cell.
+
+## **Issue: Bad flow, ROI’s appear spread out over large area, when running beads some beads appear in focus and others do not.**
+
+![Postflowclean_RoiXY_20200624](README.assets/Postflowclean_RoiXY_20200624.png)
+
+Solution: This is indicative of bad flow. Either the needle leading to the flow cell has an obstruction or there is an issue with a pump. Try changing from active pump to inactive pump and monitor the appearance of beads focus. If this does not fix the issues, there may be an obstruction right before the flow cell. Make a dilute solution of Micro90 and MQ water and run small samples of 1ml or less with **Fast sample run** selected, alternating with **debubble** cycles.
+
+## Issue: Grinding noise, rough noise from pumps coupled with bad flow
+
+Solution: This could be an issue with the sheath fluids emptying, pumps or the main valve under the syringe.
+
+1. Sheath containers: Sheath containers should always be full with filtered/purified water of the same salinity as samples. If IFCB has been running samples in a position that is not fully upright it can cause the sheath to be drained. Shine a light on the sheath containers to make sure the containers are full. Open both valves, if not sure. Sheath containers can be disconnected from pumps and flushed with a warm solution of Micro90 and purified water if debris has built up in them. The average life of a sheath cartridge is 5 years. Sheath fluid cannot be replaced once the IFCB is canned.
+
+2. Pumps: Check pump functionality by running a beads solution and checking if both pumps are functioning in the same way. If the position of the beads in the Roi XY graph changes when switching from one pump to another, either the pump or the pump head may be malfunctioning. Check the voltage settings in the Hardware tab. Make sure the voltage corresponds to the requirements of the pump. If pumps are functioning differently disconnect pumps from sheath containers and take them apart to check for debris and to check if the fine wire inside the pump is still intact.
+
+3. Valve: The main valve underneath the syringe can experience failure if the intake is not keeping debris out or if it is very old. To avoid this issue, make sure to run enough bleach/biocide cycles, replace mesh cover on the intake frequently, and listen for the shrieking noise : https://drive.google.com/open?id=1FJlbdgU3-tw-JauBLoWw-QKYLbAiw564
+
+Follow steps below if valve needs to be replaced. Some tools like valve inspection tool may need to be procured from Mclane.
+
+There was a shrieking noise coming from the valve when the IFCB started a sample. Matt from Mclane suggested that the valve was blocked or malfunctioning and needed to be switched out immediately. Example of sound: https://drive.google.com/open?id=1FJlbdgU3-tw-JauBLoWw-QKYLbAiw564
+
+Note: Need gloves for some of this, since the valve is connected to sample, detergent, beads and bleach
+
+1. Turn on IFCB and go to fluids tab. Hit Init to point the valve to the exhaust port and empty the syringe. Make sure syringes are set to “0” and turn off IFCB. Disconnect power supply.
+
+2. Take off PMT A module (4 small screws, using very small hex key)
+
+3. Push lots of paper towels under the valve to make sure any fluid that falls out of it does not get on the circuit boards underneath.
+
+   ![Valvereplace1](README.assets/Valvereplace1.jpg)
+
+4.  Disconnect valve from all connections (Label connections on IFCB A-H to avoid confusion about which goes on where), putting caps on the connections as you take them off, to prevent leakage.
+
+5. Make sure syringe has been zeroed and carefully remove syringe. Follow instructions in manual to remove syringe if unsure).
+
+   ![Valve change_2](README.assets/Valve change_2.jpg)
+
+6. Put on gloves. Take off two big screws connecting the valve to the IFCB and carefully take it out.
+
+7. Use valve tool to inspect the valve. The tool fits into the back of valve and you can turn the tool to feel how smooth/rough the ceramic plate and valve connections are. If it feels rough there may be an issue with the ball bearings or ceramic plate inside the valve. Mclane is working on whether you can replace the parts inside the valve rather than replacing the whole valve. When there are particulates stuck in the valve it may be because you are not running enough bleach/biocide cycles, or the mesh cover on the intake is not very effective, or it is just getting old. 
+
+   ![Valve inside1](README.assets/Valve inside1.png)
+
+8. If replacing the valve put O-rings in all the valve connections (A-H) in the new valve and tamp down using a screw-in connector or similar tool. This is just to make sure the rings do not fall out before the connectors can get screwed back on. IMPORTANT: Push pressurized air through the valve intake and make sure the air is coming out of the G connection. You may need to use the valve tool to realign the valve to make sure the air is blowing strongly out of the G-connection. If the air blows out of any other connection the valve will not fit in place, if the air blows out of the C-connection all the connections will be flipped and the IFCB will push wrong fluids into wrong connections. 
+
+9. Connect valve back on the IFCB, put all the connections back on starting with A and then C (this one is the most difficult to get back on). The connections are finger-tightened, if using a tool be careful not to over-tighten as this can lead to the distortion of the connections and cause leaks.
+
+10. Screw syringe onto the valve tightly, use the motor coupling on the back to align the hole on the plunger with the hole for the shoulder screw. Align the plastic spacer and screw the plunger back on. This step can cause water to shoot out of the outlet so be careful not to let any get on the circuits. Manually turn the motor coupling to bottom out the plunger into the syringe. Once the plunger has reached the bottom, turn the motor coupling back ¼ turn. This is the zero position of the syringe and can be up to 1 mm above the bottom of the syringe.
+
+11. Replace the PMT A module, being careful to align it properly. Make sure all connections have been replaced.
+
+12. Turn on IFCB and go to Fluids tab. Hit “Set syringe 0” to record the zero position of the syringe. Click “debubble (refill if needed)” to purge air from the syringe. Repeat step a few times to get all the air out of the valve and syringe. Check for leaks.
+
+13. Run some MQ on the IFCB and listen to the valve noises, check for leaks around the valve.
+
+# Appendix A: Packing lists
+
+ 
+
+IFCB dock deployment packing list
+
+·    IFCB power cable of appropriate length
+
+·    MP70 and power supply
+
+·    Junction box with Sharkfin antenna, screws for junction box lid
+
+·    Screwdriver
+
+·    Drill, drillbits and wood screws
+
+·    Power box (with power cables for both MP70 and IFCB) 
+
+·    DC-4 tube
+
+·    Nitex mesh covering for IFCB intake
+
+·    Copper mesh anti-biofouling covers for IFCB intake/outlet
+
+·    Line
+
+·    Zipties
+
+·    Electrical tape
+
+·    Scissors
+
+·    Large wire cutter
+
+·    Large wrench
+
+IFCB cruise deployment checklist
+
+·    Sharkfin antenna
+
+·    MP70 and power source
+
+·    Drill, drill bits
+
+·    Zipties, electrical tape
+
+·    Foam padding for bottom and sides of IFCB
+
+·    Bungee cords, ratchet straps, eye bolts
+
+·    Intake hose
+
+·    Dc-4
+
+·    Silicone lubricant
+
+# Appendix B:
+
+**Beads solution recipe:**
+
+500 uL Micro-90
+
+120 ml MQ (or ultrapure) water
+
+80 ul 6 um fluorescent beads in Sodium Azide
+
+10 ml 4% Sodium Azide solution
+
+120 ml of this solution is required to completely refill the beads syringe inside the IFCB. This solution can be prepared and stored in the dark at 4℃ for several months. This bead solution can also be used to align PMT signals
+
+**Azide solution recipe:**
+
+4% weight per volume of Sodium Azide solution can be prepared and stored for several months. 400 ml of this solution is enough to fill a reagent bag comfortably. This amount of reagents should last for ~9000 samples. Note: This is a hazardous solution and safety standards should be observed in the preparation, storage and disposal of the solution.
+
+**Detergent solution recipe:**
+
+1% Terg-a-zyme and 5% Contrad 70 weight by volume solution can be prepared and stored for several months. 400 ml of this solution is enough to fill a reagent bag and should last for ~9000 sample runs.
+
+
+
+# Appendix C: IFCB canning checklist
+
+Instrument:                     Date:                       Checked by:
+
+| **Part**                                                     | **Checked** | **Comments** |
+| ------------------------------------------------------------ | ----------- | ------------ |
+| **Syringe**  Cleaned  Last changed                           |             |              |
+| **Sheath**  Filled to top?  FSW/MQ?                          |             |              |
+| **Pumps**  Pump 1 (14V on new/24 V on old)  Pump 2 (14V on new/24V on old)  Connections, wiring |             |              |
+| **Valves checked**  T-join before exhaust  Beads  Reagents   |             |              |
+| **Laser**  Cover on/Light visible                            |             |              |
+| **Focus motor**   Connector/Screws                           |             |              |
+| **Alignment graphs on desktop  (Pre- and Post-canning)**  Peak v. ROI y pos   Peak v. count  RoiXY |             |              |
+| **Reagents**  Beads  Sodium Azide  Contrad+Tergazyme         |             |              |
+| **Sample test runs**  Beads  Culture/Seawater                |             |              |
+| **Software checks:**  Remote desktop access enabled  Bcdedit run  Windows updated to latest version  Updates suppressed  Syringes set to zero  Sample vol set to 5 ml  Output files selected  Beads interval set to 60 |             |              |
+
+Post-canning humidity:
+
+Post-canning temp
