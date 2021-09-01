@@ -1,4 +1,4 @@
-# IFCB Introduction and Field Deployment
+IFCB Introduction and Field Deployment
 
 # 1.  Overview
 
@@ -184,9 +184,11 @@ If a wired internet connection is not available on-site. A modem/router such as 
 
 ![MP70 SSID set up](README.assets/MP70 SSID set up.PNG)
 
-- To change the password to log into ACEmanager navigate to the **Admin tab** > **Change password**. Enter old password and new password. **Apply changes.**
+- It is important to limit incoming connections to the MP70-- there are many hacking attempts in form of bots that scan the internet for login pages and choke the bandwidth with login attempts. This can be done by navigating to the **Security tab** > **Trusted IPs- Inbound (Friends**). Select **Enable** in the dropdown menu next to **Inbound Trusted IP Mode**. Enter a range of IP addresses representing the network IPs you will be using to access the MP70/IFCB/Backup UPS. Click **Apply**.
 
-![ChangePasswd](README.assets/ChangePasswd-16303369824083.png)
+  ![Trusted IP](README.assets/Trusted IP.PNG)
+
+- To change the password to log into ACEmanager navigate to the **Admin tab** > **Change password**. Enter old password and new password. **Apply changes.**![ChangePasswd](README.assets/ChangePasswd-16303369824083.png)
 
 - **Reboot the MP70 to apply all changes**. Disconnect Ethernet cable from computer/laptop and log in to the MP70 remotely (using the LAN IP address and port number), locally (by connecting to the Wi-Fi network and using the WAN IP address and port number). The first time this connection is attempted on a browser, an error message might be received, click on **Advanced** and then on **Proceed to IP address (unsafe)** 
 
@@ -323,6 +325,29 @@ If using a backup power source like a UPS with a network management card it can 
 
 <img src="README.assets/IFCB at sea sink-16305193268082.PNG" alt="IFCB at sea sink" style="zoom: 67%;" /><img src="README.assets/IFCB at sea.PNG" alt="IFCB at sea" style="zoom: 67%;" />
 
-- Alternatively the IFCB can be set up in a sheltered area of the ship with open connections to the inside of the vessel for the power supply box and MP70 (Fig. 23). This can be done if the continuous seawater supply is only available on the deck or there is limited space inside the cabin. In this case the IFCB should still be secured to the ship with bungee cords and ratchet straps and have foam padding between the ship and all IFCB surfaces. A long hose with the PEEK tubes attached to a filter can be used to supply IFCB with seawater as well as act as a conduit for the exhaust. The IFCB power cable should be ziptied to the end cap using 4 points of connections to ensure the cable does not kink.
+- Alternatively the IFCB can be set up in a sheltered area of the ship with open connections to the inside of the vessel for the power supply box and MP70. This can be done if the continuous seawater supply is only available on the deck or there is limited space inside the cabin. In this case the IFCB should still be secured to the ship with bungee cords and ratchet straps and have foam padding between the ship and all IFCB surfaces. 
 
-  ![IFCB cruise](README.assets/IFCB cruise.jpg)
+  <img src="README.assets/Outsidecruise-16305200685104.jpg" alt="Outsidecruise" style="zoom: 33%;" />
+
+- A long hose with the PEEK tubes attached to a modified sediment filter can be used to supply IFCB with seawater as well as act as a conduit for the exhaust. The IFCB power cable should be ziptied to the end cap using 4 points of connections to ensure the cable does not kink.
+
+- The MP70 has a 20 ft long antenna cable and the antenna should be placed on the outside of the vessel. Ideally this will be ziptied to an upper deck railing or other high point for maximum cellular network connectivity.
+
+  <img src="README.assets/sharkfin-16305200804325.jpg" alt="sharkfin" style="zoom: 80%;" />
+
+  
+
+![sediment filter trap modification](README.assets/sediment filter trap modification.png)
+
+
+
+- Vibrations, shocks, and the IFCB sampling air due to unplanned shut down of the seawater flow through systems are the largest concerns on board research vessels. Some other concerns are availability of space for power and communications equipment. With strategic placement the total footprint of the IFCB can be reduced to 1 sq ft.
+
+  ![Cruise install](README.assets/Cruise install-16305209450116.jpg)
+
+- Once the IFCB has been secured and the seawater has been overflowing out of the bottle with the hose secured in it follow instructions in “Starting up the IFCB” on starting up and monitoring the IFCB. 
+
+# 6. IFCB – basic operation for sampling
+
+## 6.1. Starting up the IFCB 
+
