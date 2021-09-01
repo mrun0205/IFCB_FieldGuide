@@ -285,8 +285,6 @@ If using a backup power source like a UPS with a network management card it can 
 
 - ·Make sure the IFCB Ethernet cable is plugged into the router. Make sure you are connected to the router either wirelessly through wi-fi or wired through an Ethernet connection.
 
-- 
-
 ## 4.5. Canning the IFCB
 
 - Once the IFCB is ready for canning connect to the IFCB using Windows Remote Desktop Connection. 
