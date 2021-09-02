@@ -445,7 +445,11 @@ If using a backup power source like a UPS with a network management card it can 
 
 - In the **Hardware** tab check the PMT settings: PMTA should be set to 0.45-0.65, PMTB should be set to 0.45-0.70. Trig A and Trig B should be set between 0.120- 0.140. These settings are very subjective to the environment being sampled, and also on the laser/PMT hardware individual to each instrument. The settings should be set to a range that is giving uniform PMT signals across the flow cell and producing a zero ROI every 12-15 triggers.
 
-- In the **Hardware** tab check if the **Laser, Camera and Pump 1 or 2** are set to **ON**. Check if **Flashlamp** is set to **ON**.
+  ![Hardware tab_PMT settings](README.assets/Hardware tab_PMT settings.png)
+
+- In the **Hardware** tab check if the **Laser, Camera and Pump 1 or 2** are set to **ON** and set to 14 v/24 v depending on the age of the pump motors. Check if **Flashlamp** is set to **ON**.
+
+  ![Hardware tab_Laser](README.assets/Hardware tab_Laser-16306084224393.png)
 
 - Navigate to the **Fluids** tab and check if **Active, Refill after debubble and debubble with sample** are selected. Set sample volume to 5.0 and Beads interval to 60.
 
@@ -453,11 +457,21 @@ If using a backup power source like a UPS with a network management card it can 
 
 - Navigate to the **Camera** tab and set **# syringes** to appropriate number (10,000 if long term sampling, sampling at the rate of ~60 samples/day). Select **Output files, Debug and Blob analysis**.
 
-- If setting up a dockside submerged IFCB at this point lower the IFCB into the water and secure vertically at appropriate height to ensure that it remains submerged even at low tide.
+  If setting up a dockside submerged IFCB at this point lower the IFCB into the water and secure vertically at appropriate height to ensure that it remains submerged even at low tide.
 
   ![Camera](README.assets/Camera.png)
 
-- Start acquiring samples and note the fps rate in the **Camera** tab. It should be between 0.2-0.8 in ambient water that is not experiencing a bloom (Fig. 27). Navigate to the **Hardware** tab and note the humidity and temperature for the duration of two samples. The temperature inside the IFCB will fall/rise according to the ambient water temperature, but should not change more than a few units post-canning. Uncheck **View Images** after monitoring flow and images for a few samples to free up processing speed. Refer to section 8 and 9 for daily check in and long-term maintenance. 
+- Start acquiring samples and note the fps rate in the **Camera** tab. It should be between 0.2-0.8 in ambient water that is not experiencing a bloom. Look at the ROIs in the Camera window and make sure they are well focused. Focus can be adjusted by very small increments using the **focus** **motor** controls in the Hardware tab. Use the Large step << and >> icons to move in one direction at a time to adjust focus.
+
+  ![Hardware tab_Focus  motor](README.assets/Hardware tab_Focus  motor.png)
+
+- Navigate to the **Hardware** tab and note the humidity and temperature for the duration of two samples. The temperature inside the IFCB will fall/rise according to the ambient temperature, but should not change more than a few units post-canning. Uncheck **View Images** after monitoring flow and images for a few samples to free up processing speed.  
+
+- The graphing function takes a lot out of the CPU, but is useful to keep an eye on the flow.  Navigate to **Graphs** next to the **Hardware tab**, and select graph type **RoiXY**. The ROIs should be triggering within the area in the box in next figure.
+
+- Refer to section 7 for daily check in and long-term maintenance.
+
+  ![image-20210902145143384](README.assets/image-20210902145143384.png)
 
 ### 6.1.2. Basic Operations using the Linux OS
 
@@ -489,7 +503,7 @@ If using a backup power source like a UPS with a network management card it can 
 
   ![WebUI](README.assets/WebUI.jpg)
 
-- Navigate to the **Hardware** tab and note the **humidity and temperature**. This will have changed after transport from the lab (Fig. 15). Also make sure the **Live** button above humidity and temp is not highlighted since this makes the software die L The software updates the temperature and humidity readings every minute or so. Both of these readings are relative to the initial readings and will fluctuate according to the external temperature, and temperature of the water being samples. If temperature exceeds 35C the IFCB should be turned off as this can damage the CPU. If humidity rises more than 10% from initial reading it might indicate a leak in the reagent bags/syringe/internal fluidics and the IFCB should be monitored. Turn off the IFCB if humidity exceeds 60%.
+- Navigate to the **Hardware** tab and note the **humidity and temperature**. This will have changed after transport from the lab. Also make sure the **Live** button above humidity and temp is not highlighted since this makes the software die. The software updates the temperature and humidity readings every minute or so. Both of these readings are relative to the initial readings and will fluctuate according to the external temperature, and temperature of the water being samples. If temperature exceeds 35C the IFCB should be turned off as this can damage the CPU. If humidity rises more than 10% from initial reading it might indicate a leak in the reagent bags/syringe/internal fluidics and the IFCB should be monitored. Turn off the IFCB if humidity exceeds 60%.
 
   ![Hardware tab_T+H](README.assets/Hardware tab_T+H.jpg)
 
@@ -506,6 +520,8 @@ If using a backup power source like a UPS with a network management card it can 
   ![Sample num](README.assets/Sample num.jpg)
 
 - Start acquiring samples by clicking on **Start acquisition**. Make sure the intake and exhaust lines are submerged in sampling water before hitting start.
+
+  If setting up a dockside submerged IFCB at this point lower the IFCB into the water and secure vertically at appropriate height to ensure that it remains submerged even at low tide.
 
   ![Start acqui](README.assets/Start acqui.jpg)
 
