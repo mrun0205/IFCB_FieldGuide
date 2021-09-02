@@ -485,7 +485,7 @@ If using a backup power source like a UPS with a network management card it can 
 
 - Logging into the IFCB when using modem: VNC only requires the IP address (WAN/LAN) and serial number password to log in.
 
-  - LAN connection: When connected directly to the MP70 using wired/wireless connection. Use local IP address 192.168.13.xxx to connect to the IFCB over Remote Desktop/VNC  (setting up the IP address for IFCBs is detailed in section 4.2).
+  - LAN connection: When connected directly to the MP70 using wired/wireless connection. Use local IP address 192.168.13.xxx to connect to the IFCB over Remote Desktop/VNC  (setting up the IP address for IFCBs is detailed in earlier section).
 
   - WAN connection: When not connected to the MP70 locally or when you are remote to the site of the MP70, connect using remote desktop/VNC with the IP address associated with SIM card used in Modem with port number assigned to IFCB, e.g. 166.xxx.xx.42:(IFCB external port number).
 
@@ -497,7 +497,7 @@ If using a backup power source like a UPS with a network management card it can 
 
     ![Landing page](README.assets/Landing page.PNG)
 
-- The IFCB will have started up in the Linux OS. Open VNC on the same laptop to connect to the IFCB using the IP address i.e. http://192.168.1.165, and the password which is the serial number assigned by McLane (i.e. MLxxxxx-01), which is printed on the top of the IFCB.
+- The IFCB will have started up in the Linux OS. Open VNC on the same laptop to connect to the IFCB using the IP address i.e. http://192.168.1.xxx, and the password which is the serial number assigned by McLane (i.e. MLxxxxx-01), which is printed on the top of the IFCB.
 
 - The IFCBacquire software will have started up 60 seconds after boot up and the main debug windows will be up on the desktop. Click on **WebUI** to start up the full user interface in Chromium, if it has not already started up. 
 
@@ -511,7 +511,7 @@ If using a backup power source like a UPS with a network management card it can 
 
   ![Hardware tab_on+off](README.assets/Hardware tab_on+off.jpg)
 
-- Navigate to the **Fluids** tab and check if **Refill after debubble and debubble     with sample** are selected. Check if **sample volume** to is set to **5.0** and **Beads interval**     to **60** (Fig. 17). If making any     changes in this tab make sure to click **Set** to apply changes.
+- Navigate to the **Fluids** tab and check if **Refill after debubble and debubble with sample** are selected. Check if **sample volume** to is set to **5.0** and **Beads interval**     to **60**. If making any     changes in this tab make sure to click **Set** to apply changes.
 
   ![Fluids settings](README.assets/Fluids settings.jpg)
 
@@ -563,7 +563,7 @@ If using a backup power source like a UPS with a network management card it can 
 
   ![IFCBacquire GPS settings](README.assets/IFCBacquire GPS settings.PNG)
   
-- If using the index file to connect to the IFCB, open the index file on the laptop that is connected to the router wi-fi and use the IP address and port number 8092 as **Server**. E.g. for our router this will be http://192.xxx.x.xx5:8092 and IFCB number xxx. Then click on **connect**. The index file looks identical to the WebUI, but having both connected to the IFCB at once can cause it to crash.
+- If using the index file to connect to the IFCB, open the index file on the laptop that is connected to the router wi-fi and use the IP address and port number 8092 as **Server**. e.g. for our router this will be http://192.xxx.x.xx5:8092 and IFCB number xxx. Then click on **connect**. The index file looks identical to the WebUI, but having both connected to the IFCB at once can cause it to crash.
 
   ![index file](README.assets/index file.jpg)
 
