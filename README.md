@@ -1,4 +1,4 @@
-IFCB Introduction and Field Deployment
+[TOC]
 
 # 1.  Overview
 
@@ -167,9 +167,20 @@ If a wired internet connection is not available on-site. A modem/router such as 
 ![MP70 IP reservation_edited](README.assets/MP70 IP reservation_edited.png)
 
 - A port number needs to be assigned to the IFCB and other equipment being used with the MP70, such as a backup power source. To add/check these settings navigate to the **Security tab** > **Port forwarding**. Select **DMZ host enabled** > **Automatic, Port forwarding** > **Enable**. Select **TCP & UDP** from drop down menu under **Protocol**.
-- Assign a port number to each local IP address that was added in the last step. Note: For ease of identification we use the last 3 digits of the local IP address (from Fig. 3) for the public port number of an assigned equipment. (For the Schneider APC UPS, the default port for encrypted (https) use is 5000, and it can be assigned to the IP address that was assigned to the MAC address of the UPS in the previous step). The private port number can be any number greater than 0. **Apply changes**.
+- Assign a port number to each local IP address that was added in the last step. Note: For ease of identification we use the last 3 digits of the local IP address for the public port number of an assigned equipment. 
+  - Remote desktop requires TCP port 3389 to be open.
 
-![MP70 port_edited](README.assets/MP70 port_edited-16303365965341.png)
+![MP70 port_edited](README.assets/MP70 port_edited-16303365965341-16306071261172.png)
+
+- - VNC requires private port 5900  to be open, and the host-server set up of IFCBacquire requires port 8092 to be set as public and private start ports. The appropriate ports  will need to be assigned to IP assigned to the IFCB depending on the remote client you are using. 
+
+![Linux ports](README.assets/Linux ports.PNG)
+
+- - For the Schneider APC UPS, the default public start port for encrypted (https) use is 5000, and it can be assigned to the IP address that was assigned to the MAC address of the UPS in the previous step, The private port number can be any number greater than 0. **Apply changes**.
+
+    ![MP70 security settings](README.assets/MP70 security settings.PNG)
+
+- To enable both HTTP and HTTPS access navigate to the **Security tab** > Both **HTTP and HTTPS** under **Remote access and Local access**, **apply changes**. Note the port number beside “HTTP port” and “HTTPS” port (Fig. 5). The default WAN IP address of all the MP70s is the same: 192.168.13.31. To access the IFCB through local connection use the local IP address assigned to the IFCB along with the port number under HTTP, to access the IFCB remotely use the IP address of the MP70 ending with the port number under HTTPS assigned to the IFCB. **Apply changes.**
 
 - To enable both HTTP and HTTPS access navigate to the **Security tab** > Both **HTTP and HTTPS** under **Remote access and Local access**, **apply changes**. Note the port number beside “HTTP port” and “HTTPS” port (Fig. 5). The default WAN IP address of all the MP70s is the same: 192.168.13.31. To access the IFCB through local connection use the local IP address assigned to the IFCB along with the port number under HTTP, to access the IFCB remotely use the IP address of the MP70 ending with the port number under HTTPS assigned to the IFCB. **Apply changes.**
 
@@ -189,17 +200,33 @@ If a wired internet connection is not available on-site. A modem/router such as 
 
 - To change the password to log into ACEmanager navigate to the **Admin tab** > **Change password**. Enter old password and new password. **Apply changes.**![ChangePasswd](README.assets/ChangePasswd-16303369824083.png)
 
+- IFCBacquire in Linux is capable of getting a GPS fix from the MP70. Location settings will need to be changed to accomplish this, as well as changes to the IFCBacquire settings file; details on IFCBacquire settings that need changing are in the IFCB field manual.
+
+  - Navigate to the **Location** tab and under **Global settings** on the left **Enable Location services** from the dropdown menu.
+
+  ![Acemanager GPS settings](../IFCB_Comms_Telemetry/README.assets/Acemanager GPS settings.PNG)
+
+  - Navigate to **Server 1** on the left and expand Report Type. Select "**User defined NMEA**" in the dropdown menu next to **Location Report Format** and **Enable** next to **GGA**
+
+  ![GPS settings IMPORTANT](../IFCB_Comms_Telemetry/README.assets/GPS settings IMPORTANT.PNG)
+
+  - Expand Server under the same tab and not the **Report Server 1 Port Number**. This number, usually **22335** will need to be used in the **Settings file** of **IFCBacquire** when using the **Linux OS** to get a GPS location tag for every file the IFCB makes.
+
 - **Reboot the MP70 to apply all changes**. Disconnect Ethernet cable from computer/laptop and log in to the MP70 remotely (using the LAN IP address and port number), locally (by connecting to the Wi-Fi network and using the WAN IP address and port number). The first time this connection is attempted on a browser, an error message might be received, click on **Advanced** and then on **Proceed to IP address (unsafe)** 
+
+![Acemanager GPS settings2](README.assets/Acemanager GPS settings2.PNG)
+
+- To change the password to log into ACEmanager navigate to the **Admin tab** > **Change password**. Enter old password and new password. **Apply changes.**![ChangePasswd](README.assets/ChangePasswd-16303369824083-16306070395381.png)
 
 ![Error](README.assets/Error.PNG)
 
-·    Notes 1: If using an AT&T SIM card the APN (Access Point name) will need to be set to “i2gold”. It is important to have a SIM card with a static IP enabled from the provider (Fig. 9). This setting can be checked under the **WAN/Cellular tab > Cellular > SIM slot 1** configuration. These settings are provided by the SIM card provider and if the APN is not automatically entered from the SIM card the provider will have details about the APN and SIM PIN.
+Notes 1: If using an AT&T SIM card the APN (Access Point name) will need to be set to “i2gold”. It is important to have a SIM card with a static IP enabled from the provider (Fig. 9). This setting can be checked under the **WAN/Cellular tab > Cellular > SIM slot 1** configuration. These settings are provided by the SIM card provider and if the APN is not automatically entered from the SIM card the provider will have details about the APN and SIM PIN.
 
 ![SIM APN](README.assets/SIM APN.PNG)
 
 ·    Notes 2: If using a different provider than AT&T, a different radio module firmware may need to be installed. Instructions on how to do this can be found on the Sierra Wireless page https://source.sierrawireless.com/resources/airlink/software_downloads/mp70/mp70-firmware-list/#sthash.sorWOSrs.dpbs
 
-### 4.2.2. Configuring the MP70 with a pre-configured template file
+### 4.2.2. Setting up the MP70 with a pre-configured template file
 
 - Insert SIM card into MP70 (note the static IP address associated with the SIM). Connect sharkfin antennae to MP70, using all 6 cables, connect power cable to MP70 and power up, cnnect MP70 to computer/laptop using a cat 5 ethernet cable.
 
@@ -512,6 +539,14 @@ If using a backup power source like a UPS with a network management card it can 
 
   ![Graphs](README.assets/Graphs.PNG)
 
+- If using GPS location in conjunction with a pre-configured MP70 (see cell modem setup) open the settings file from the main IFCBacquire window or from the IFCBacquire Host folder. Scroll to the bottom of the file to find the GPSFeed setting and edit it from 0 to 1:22335. Confirm from the MP70 AceManager that the "Report Server 1 Port number" is 22335, if not then use the port number the modem is assigning. Save and close file, reboot IFCB. 
+
+  ![GPS settings file](README.assets/GPS settings file.PNG)
+  
+- Open the **Hardware** tab on IFCBacquire click on **Other** and click on **Get**. The IFCB should be getting a GPS location from the Modem.
+
+  ![IFCBacquire GPS settings](README.assets/IFCBacquire GPS settings.PNG)
+  
 - If using the index file to connect to the IFCB, open the index file on the laptop that is connected to the router wi-fi and use the IP address and port number 8092 as **Server**. E.g. for our router this will be http://192.xxx.x.xx5:8092 and IFCB number xxx. Then click on **connect**. The index file looks identical to the WebUI, but having both connected to the IFCB at once can cause it to crash.
 
   ![index file](README.assets/index file.jpg)
@@ -723,77 +758,77 @@ Note: Need gloves for some of this, since the valve is connected to sample, dete
 
  
 
-IFCB dock deployment packing list
+### IFCB dock deployment packing list
 
-·    IFCB power cable of appropriate length
+- [ ] IFCB power cable of appropriate length
 
-·    MP70 and power supply
+- [ ] MP70 and power supply
 
-·    Junction box with Sharkfin antenna, screws for junction box lid
+- [ ] Junction box with Sharkfin antenna, screws for junction box lid
 
-·    Screwdriver
+- [ ] Screwdriver
 
-·    Drill, drillbits and wood screws
+- [ ] Drill, drillbits and wood screws
 
-·    Power box (with power cables for both MP70 and IFCB) 
+- [ ] Power box (with power cables for both MP70 and IFCB) 
 
-·    DC-4 tube
+- [ ] DC-4 Corning 
 
-·    Nitex mesh covering for IFCB intake
+- [ ] Nitex mesh covering for IFCB intake
 
-·    Copper mesh anti-biofouling covers for IFCB intake/outlet
+- [ ] Copper mesh anti-biofouling covers for IFCB intake/outlet
 
-·    Line
+- [ ] Line
 
-·    Zipties
+- [ ] Zipties
 
-·    Electrical tape
+- [ ] Electrical tape
 
-·    Scissors
+- [ ] Scissors
 
-·    Large wire cutter
+- [ ] Large wire cutter
 
-·    Large wrench
+- [ ] Large wrench
 
-IFCB cruise deployment checklist
+### IFCB cruise deployment checklist
 
-·    Sharkfin antenna
+- [ ] Sharkfin antenna
 
-·    MP70 and power source
+- [ ] MP70/Netgear router
+- [ ] Power source
+- [ ] Power cable
+- [ ] PEEK tubing, silicone tubing
+- [ ] Drill, drill bits
 
-·    Drill, drill bits
+- [ ] Zipties
+- [ ] Electrical tape
+- [ ] Closed cell foam padding for bottom of IFCB
+- [ ] Open cell foam padding for sides of IFCB
+- [ ] Bungee cords, ratchet straps, eye bolts
 
-·    Zipties, electrical tape
-
-·    Foam padding for bottom and sides of IFCB
-
-·    Bungee cords, ratchet straps, eye bolts
-
-·    Intake hose
-
-·    Dc-4
-
-·    Silicone lubricant
+- [ ] Seawater flow through hose
+- [ ] Modified sediment filter
+- [ ] DC-4 Corning
+- [ ] Parker Super O-lube
+- [ ] Aquashield
 
 # Appendix B:
 
-**Beads solution recipe:**
+### **Beads solution recipe:**
 
-500 uL Micro-90
+- [ ] 500 uL Micro-90
+- [ ] 120 ml MQ (or ultrapure) water
+- [ ] 80 ul 6 um fluorescent beads in Sodium Azide
 
-120 ml MQ (or ultrapure) water
-
-80 ul 6 um fluorescent beads in Sodium Azide
-
-10 ml 4% Sodium Azide solution
+- [ ] 10 ml 4% Sodium Azide solution
 
 120 ml of this solution is required to completely refill the beads syringe inside the IFCB. This solution can be prepared and stored in the dark at 4℃ for several months. This bead solution can also be used to align PMT signals
 
-**Azide solution recipe:**
+### **Azide solution recipe:**
 
 4% weight per volume of Sodium Azide solution can be prepared and stored for several months. 400 ml of this solution is enough to fill a reagent bag comfortably. This amount of reagents should last for ~9000 samples. Note: This is a hazardous solution and safety standards should be observed in the preparation, storage and disposal of the solution.
 
-**Detergent solution recipe:**
+### **Detergent solution recipe:**
 
 1% Terg-a-zyme and 5% Contrad 70 weight by volume solution can be prepared and stored for several months. 400 ml of this solution is enough to fill a reagent bag and should last for ~9000 sample runs.
 
@@ -803,18 +838,32 @@ IFCB cruise deployment checklist
 
 Instrument:                     Date:                       Checked by:
 
-| **Part**                                                     | **Checked** | **Comments** |
-| ------------------------------------------------------------ | ----------- | ------------ |
-| **Syringe**  Cleaned  Last changed                           |             |              |
-| **Sheath**  Filled to top?  FSW/MQ?                          |             |              |
-| **Pumps**  Pump 1 (14V on new/24 V on old)  Pump 2 (14V on new/24V on old)  Connections, wiring |             |              |
-| **Valves checked**  T-join before exhaust  Beads  Reagents   |             |              |
-| **Laser**  Cover on/Light visible                            |             |              |
-| **Focus motor**   Connector/Screws                           |             |              |
-| **Alignment graphs on desktop  (Pre- and Post-canning)**  Peak v. ROI y pos   Peak v. count  RoiXY |             |              |
-| **Reagents**  Beads  Sodium Azide  Contrad+Tergazyme         |             |              |
-| **Sample test runs**  Beads  Culture/Seawater                |             |              |
-| **Software checks:**  Remote desktop access enabled  Bcdedit run  Windows updated to latest version  Updates suppressed  Syringes set to zero  Sample vol set to 5 ml  Output files selected  Beads interval set to 60 |             |              |
+| **Part**                        |                                        | **Checked** | **Comments** |
+| ------------------------------- | -------------------------------------- | ----------- | ------------ |
+| **Syringe**                     | Cleaned                                |             |              |
+|                                 | Last changed                           |             |              |
+| **Sheath**                      | Filled to top?                         |             |              |
+|                                 | FSW/MQ?                                |             |              |
+| **Pumps**                       | Pump 1 (14V on new/24 V on old)        |             |              |
+|                                 | Pump 2 (14V on new/24V on old)         |             |              |
+|                                 | Connections, wiring                    |             |              |
+| **Valves checked**              | T-join before exhaust  Beads  Reagents |             |              |
+| **Laser**                       | Cover on/Light visible                 |             |              |
+| **Focus motor**                 | Connector/Screws                       |             |              |
+| **Alignment graphs on desktop** | Peak v. ROI y pos                      |             |              |
+|                                 | Peak v. count  RoiXY                   |             |              |
+| **Reagents**                    | Beads                                  |             |              |
+|                                 | Sodium Azide                           |             |              |
+|                                 | Contrad+Tergazyme                      |             |              |
+| **Software checks:**            | Remote desktop access enabled          |             |              |
+|                                 | Bcdedit run                            |             |              |
+|                                 | Windows updated to latest version      |             |              |
+|                                 | Updates suppressed                     |             |              |
+|                                 | Syringes set to zero                   |             |              |
+|                                 | Sample vol set to 5 ml                 |             |              |
+|                                 | Output files selected                  |             |              |
+|                                 | Beads interval set to 60               |             |              |
+|                                 | Sample number set to 0                 |             |              |
 
 Post-canning humidity:
 
