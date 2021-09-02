@@ -180,9 +180,9 @@ If a wired internet connection is not available on-site. A modem/router such as 
 
     ![MP70 security settings](README.assets/MP70 security settings.PNG)
 
-- To enable both HTTP and HTTPS access navigate to the **Security tab** > Both **HTTP and HTTPS** under **Remote access and Local access**, **apply changes**. Note the port number beside “HTTP port” and “HTTPS” port (Fig. 5). The default WAN IP address of all the MP70s is the same: 192.168.13.31. To access the IFCB through local connection use the local IP address assigned to the IFCB along with the port number under HTTP, to access the IFCB remotely use the IP address of the MP70 ending with the port number under HTTPS assigned to the IFCB. **Apply changes.**
+- To enable both HTTP and HTTPS access navigate to the **Security tab** > Both **HTTP and HTTPS** under **Remote access and Local access**, **apply changes**. Note the port number beside “HTTP port” and “HTTPS” port. The default WAN IP address of all the MP70s is the same: 192.168.13.31. To access the IFCB through local connection use the local IP address assigned to the IFCB along with the port number under HTTP, to access the IFCB remotely use the IP address of the MP70 ending with the port number under HTTPS assigned to the IFCB. **Apply changes.**
 
-- To enable both HTTP and HTTPS access navigate to the **Security tab** > Both **HTTP and HTTPS** under **Remote access and Local access**, **apply changes**. Note the port number beside “HTTP port” and “HTTPS” port (Fig. 5). The default WAN IP address of all the MP70s is the same: 192.168.13.31. To access the IFCB through local connection use the local IP address assigned to the IFCB along with the port number under HTTP, to access the IFCB remotely use the IP address of the MP70 ending with the port number under HTTPS assigned to the IFCB. **Apply changes.**
+- To enable both HTTP and HTTPS access navigate to the **Security tab** > Both **HTTP and HTTPS** under **Remote access and Local access**, **apply changes**. Note the port number beside “HTTP port” and “HTTPS” port. The default WAN IP address of all the MP70s is the same: 192.168.13.31. To access the IFCB through local connection use the local IP address assigned to the IFCB along with the port number under HTTP, to access the IFCB remotely use the IP address of the MP70 ending with the port number under HTTPS assigned to the IFCB. **Apply changes.**
 
 ![Https http](README.assets/Https http.PNG)
 
@@ -218,13 +218,11 @@ If a wired internet connection is not available on-site. A modem/router such as 
 
 - To change the password to log into ACEmanager navigate to the **Admin tab** > **Change password**. Enter old password and new password. **Apply changes.**![ChangePasswd](README.assets/ChangePasswd-16303369824083-16306070395381.png)
 
-![Error](README.assets/Error.PNG)
-
-Notes 1: If using an AT&T SIM card the APN (Access Point name) will need to be set to “i2gold”. It is important to have a SIM card with a static IP enabled from the provider (Fig. 9). This setting can be checked under the **WAN/Cellular tab > Cellular > SIM slot 1** configuration. These settings are provided by the SIM card provider and if the APN is not automatically entered from the SIM card the provider will have details about the APN and SIM PIN.
+Notes 1: If using an AT&T SIM card the APN (Access Point name) will need to be set to “i2gold”. It is important to have a SIM card with a static IP enabled from the provider. This setting can be checked under the **WAN/Cellular tab > Cellular > SIM slot 1** configuration. These settings are provided by the SIM card provider and if the APN is not automatically entered from the SIM card the provider will have details about the APN and SIM PIN.
 
 ![SIM APN](README.assets/SIM APN.PNG)
 
-·    Notes 2: If using a different provider than AT&T, a different radio module firmware may need to be installed. Instructions on how to do this can be found on the Sierra Wireless page https://source.sierrawireless.com/resources/airlink/software_downloads/mp70/mp70-firmware-list/#sthash.sorWOSrs.dpbs
+Notes 2: If using a different provider than AT&T, a different radio module firmware may need to be installed. Instructions on how to do this can be found on the Sierra Wireless page https://source.sierrawireless.com/resources/airlink/software_downloads/mp70/mp70-firmware-list/#sthash.sorWOSrs.dpbs
 
 ### 4.2.2. Setting up the MP70 with a pre-configured template file
 
@@ -238,9 +236,11 @@ Notes 1: If using an AT&T SIM card the APN (Access Point name) will need to be s
 
   ![MP70 template](README.assets/MP70 template.PNG)
 
-  The master configuration file will apply all the necessary changes to assign IP addresses and ports to the IFCB and UPS. The Wi-Fi will need to be enabled and the Wi-Fi name and passphrase can be changed/set (see instructions in section 4.2.1). 
+  The master configuration file will apply all the necessary changes to assign IP addresses and ports to the IFCB and UPS. The Wi-Fi will need to be enabled and the Wi-Fi name and passphrase can be changed/set. 
 
 - **Reboot the MP70 to apply all changes**. Disconnect Ethernet cable from computer/laptop and log in to the MP70 remotely (using the LAN IP address and port number) or locally (by connecting to the Wi-Fi network and using the WAN IP address and port number). The first time this connection is attempted on a browser, an error message might be received, click on **Advanced** and then on **Proceed to IP address (unsafe)**.
+
+  ![Error](README.assets/Error.PNG)
 
 ## 4.3. Backup power setup (APC Smart-UPS 1500VA LCD with network card 2)
 
@@ -276,19 +276,19 @@ If using a backup power source like a UPS with a network management card it can 
 
 - With a laptop or phone, connect to Netgear wireless network. If using an already configured router from our lab, use the user name and p/w provided with the router to login to the Wi-Fi. If using an un-configured router connect to it using the default NetGearXX  with pw printed on the underside of the unit.
 
-- After connecting you laptop, login to the router configuration page. In a browser page, go to: 192.168.1.1 
+- After connecting you laptop, login to the router configuration page. In a browser page, go to: **192.168.1.1** 
 
   ![Advanced attached devies](README.assets/Advanced attached devies.PNG)
 
-- Click on the “Advanced” tab and then “Administration and then “Attached Devices”. Any pre-set devices will show up under Wired or Wireless devices. 
+- Click on the **Advanced** tab and then **Administration** and then **Attached Devices**. Any pre-set devices will show up under **Wired or Wireless devices**. 
 
   ![Advanced attached devies2](README.assets/Advanced attached devies2.jpg)
 
-- To add new device click on “Access Control” in the upper right corner. 
+- To add new device click on **Access Control** in the upper right corner. 
 
   ![Access control- add devices](README.assets/Access control- add devices.PNG)
 
-- Under Access Rules make sure “Add all new devices to connect” is selected. Below this will appear a list of all devices that are currently allowed to connect. If your device does not appear in this menu click on “Add”.
+- Under Access Rules make sure “**Add all new devices to connect**” is selected. Below this will appear a list of all devices that are currently allowed to connect. If your device does not appear in this menu click on **Add**.
 
   ![Add new devices landing page](README.assets/Add new devices landing page.PNG)
 
@@ -298,15 +298,15 @@ If using a backup power source like a UPS with a network management card it can 
 
   ![LAN reservation MAC address](README.assets/LAN reservation MAC address.PNG)
 
-- Set an IP address in the range of 192.168.1.2 to192.168.1.255 for your device, enter the MAC address and Device name ![LAN reservation2](README.assets/LAN reservation2.PNG)and click **Add.** 
+- Set an IP address in the range of **192.168.1.2** to**192.168.1.255** for your device, enter the MAC address and Device name ![LAN reservation2](README.assets/LAN reservation2.PNG)and click **Add.** 
 
   
 
-- VNC has ports 5800 to 5900 available and when using the Linux OS and VNC to access the IFCB these ports have to be made available to the device’s IP address. Navigate to Advanced setup>Port forwarding/Port triggering 
+- VNC needs port 5900 available and when using the Linux OS and VNC to access the IFCB these ports have to be made available to the device’s IP address. Navigate to **Advanced setup>Port forwarding/Port triggering** 
 
-- Select Port forwarding for service type. Enter the IP address you have assigned to your device and click Add.
+- Select **Port forwarding** for **service type**. Enter the IP address you have assigned to your device and click **Add**.
 
-- Set 5800-5900 under external starting port and internal starting port and name the Service “VNC”. Save changes and exit out of the router browser page. The router is now set up for use with the IFCB. 
+- Set **5800-5900** under **external starting port** and **internal starting port** and name the **Service “VNC**”. **Save changes** and exit out of the router browser page. The router is now set up for use with the IFCB. 
 
   ![Adding VNC ports](README.assets/Adding VNC ports.PNG)
 
@@ -322,7 +322,7 @@ If using a backup power source like a UPS with a network management card it can 
 
 - Gently lower the IFCB into its housing while sample continues to run, observing if sample is running normally and the rate of generating blobs, image quality and ROI position does not change. This is to ensure that nothing crucial moves during the canning and ensure alignment remains unchanged. 
 
-- Navigate to the **Graphs** tab and check the PMT position using the RoiYpos (ROI Y position) v. PMT peak graph, make sure the graph resembles the post-alignment graph and export the graph to the desktop for records. 
+- Navigate to the **Graphs** tab and check the PMT position using the **RoiYpos (ROI Y position) v. PMT peak** graph, make sure the graph resembles the post-alignment graph and export the graph to the desktop for records. 
 
 - Push down on the endcap of the IFCB making sure the O-ring is not getting caught on the can. Keep an eye on the beads run at the same time making sure the pressurizing is not misaligning the IFCB.
 
