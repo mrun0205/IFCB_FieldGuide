@@ -104,7 +104,7 @@ The intake tubing of the IFCB is fitted with a 150 µm mesh as described in the 
 
 - ####  Connectivity for data transfer
 
-If a wired internet connection is not available on-site. A modem/router such as an MP70 (see 2.3 Cellular modem) can be used for connecting to the IFCB and data transfers. If cell phone connectivity is not possible, e.g. on board research vessels a router can be used to create a wired or unwired connection between the IFCB and a computer so that data can be backed up on a computer external to the IFCB for Image Identification.
+If a wired internet connection is not available on-site a modem/router such as an MP70 can be used for connecting to the IFCB and data transfers. If cell phone connectivity is not possible, e.g. on board research vessels a router can be used to create a wired or unwired connection between the IFCB and a computer so that data can be backed up on a computer external to the IFCB for Image Identification.
 
 
 
@@ -120,19 +120,19 @@ If a wired internet connection is not available on-site. A modem/router such as 
 
 - Metal stabilizing clip should be detached from below the end cap before canning is attempted.
 
-- Check Azide and detergent bags contents (2/3 full, with about 400 ml of reagents), no bubbles, hanging off the knob above pumps (see appendix B for reagent recipes).  The side of the bags in contact with IFCB wiring should be covered in electrical tape to prevent tearing of bags and leaking of contents.
+- Check biocide and detergent bags contents (2/3 full, with about 400 ml of reagents), no bubbles, hanging off the knob above pumps (see appendix B for reagent recipes).  The side of the bags in contact with IFCB wiring should be covered in electrical tape or duct tape to prevent tearing of bags and leaking of contents.
 
-- Blue Velcro strap should be now attached to hold in the Azide and Bleach bags.
+- Blue Velcro strap should be now attached to hold in the biocide and detergent bags.
 
 - Check contents of beads syringe, refill if running lower than 100 ml for a long-term deployment (see Appendix B for bead solution recipe).
 
-- If using the Windows OS:
+- If using the **Windows OS**:
 
   On the IFCB check if remote desktop is enabled in Windows under **Settings** > **System** > **Remote desktop** > **Enable remote desktop**
 
-  Check if IFCBacquire has been set up to start 60 seconds after start up in Task Scheduler.
+  Check if IFCBacquire has been set up to start 60 seconds after start up in **Task Scheduler**.
 
-  Run BCDedit command to stop Windows from starting in safe mode: Right click command prompt > run as administrator. Run following commands one at a time. Make sure you get the operation successful message.  
+  Run BCDedit command to stop Windows from starting in safe mode: Right click **Command Prompt** > **run as administrator**. Run following commands one at a time. Make sure you get the operation successful message.  
 
   ```
   bcdedit /set {default} bootstatuspolicy ignoreallfailures
@@ -143,9 +143,9 @@ If a wired internet connection is not available on-site. A modem/router such as 
 
 ​       Set # of syringes to 0 in IFCBacquire before disconnecting from monitor.
 
-- If using Linux OS on the IFCB:
+- If using **Linux OS** on the IFCB:
 
-  Check VNC viewer to see if port 5800-5900 have been assigned to the IFCB.
+  Check VNC server settings to see if port 5800-5900 have been assigned to the IFCB.
 
   Run the following commands in Terminal/UXTerm to make sure the system does not enter any hibernation/sleep states
 
@@ -153,16 +153,22 @@ If a wired internet connection is not available on-site. A modem/router such as 
   sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
   ```
 
-  Shutdown the IFCB and disconnect from monitor. Connect using a remote connection through VNC and make sure the IFCB is not experiencing "small window VNC connection" issues. This issue sometimes shows up after several reboots of the system and can be fixed by attaching a small dongle on the VGA connector available from McLane labs.
+  Shutdown the IFCB and disconnect from monitor. Connect using a remote connection through VNC and make sure the IFCB is not experiencing "small window VNC connection" issues. This issue sometimes shows up after several reboots of the system and can be fixed by attaching a small dongle on the VGA connector of the IFCB, and is available from McLane labs on request.
 
 
 ## 4.2. Cellular modem set up
 
 ### 4.2.1. New MP70 set up
 
-- To set up a new MP70, insert SIM card in slot on MP70 (note the static IP address associated with the SIM card). Connect MP70 unit to the sharkfin antenna using all 6 cables and power on the unit, connect to a computer using a cat 5 ethernet cable. 
+- To set up a new MP70, insert SIM card in slot on MP70, **note the static IP address** provided for the SIM card. If a static IP has not been set for the SIM card by the provider, communication with the IFCB using the following instructions will not be possible. 
+
+  Note: The following instructions will only work if the DHCP settings on the IFCB are set to automatic as provided by McLane. If a manual IP address has been set for the IFCB this will need to be reversed back to the default setting. Helpful instructions on doing this here: https://support.microsoft.com/en-us/windows/change-tcp-ip-settings-bd0a07af-15f5-cd6a-363f-ca2b6f391ace
+
+- Connect MP70 unit to the sharkfin antenna using all 6 cables and power on the unit, connect to a computer using a cat 5 ethernet cable. 
+
 - Open a browser window and go to http://192.168.13.31:9191. This will open up the ACEmanager window. Sign in using the default password on the back of the MP70, or try default password 12345 (preset with all MP70s that do not have a password printed on the back).
-- Navigate to the **LAN tab** to see the **Reservation list** of the MP70 and add the MAC address of your IFCB (and backup power supply if using) to the reservation list. Assign a local IP address starting from 192.168.13.100 to 192.168.13.200 to each of the devices that will be used with the MP70 (Fig. 3). **Apply changes.** Note: For ease of identification we use the IFCB number assigned to each IFCB by Mclane labs as the last 3 digits of the IP address**. Apply changes.**
+
+- Navigate to the **LAN tab** to see the **Reservation list** of the MP70 and add the MAC address of your IFCB (and backup power supply if using) to the reservation list. Assign a local IP address starting from 192.168.13.100 to 192.168.13.200 to each of the devices that will be used with the MP70. **Apply changes.** Note: For ease of identification we use the IFCB number assigned to each IFCB by McLane labs as the last 3 digits of the IP address**. Apply changes.**
 
 ![MP70 IP reservation_edited](README.assets/MP70 IP reservation_edited.png)
 
@@ -170,7 +176,7 @@ If a wired internet connection is not available on-site. A modem/router such as 
 - Assign a port number to each local IP address that was added in the last step. Note: For ease of identification we use the last 3 digits of the local IP address for the public port number of an assigned equipment. 
   - Remote desktop requires TCP port 3389 to be open.
 
-![MP70 port_edited](README.assets/MP70 port_edited-16303365965341-16306071261172.png)
+![](README.assets/MP70 port_edited-16303365965341-16306071261172.png)
 
 - - VNC requires private port 5900  to be open, and the host-server set up of IFCBacquire requires port 8092 to be set as public and private start ports. The appropriate ports  will need to be assigned to IP assigned to the IFCB depending on the remote client you are using. 
 
@@ -198,8 +204,6 @@ If a wired internet connection is not available on-site. A modem/router such as 
 
   ![Trusted IP](README.assets/Trusted IP.PNG)
 
-- To change the password to log into ACEmanager navigate to the **Admin tab** > **Change password**. Enter old password and new password. **Apply changes.**![ChangePasswd](README.assets/ChangePasswd-16303369824083.png)
-
 - IFCBacquire in Linux is capable of getting a GPS fix from the MP70. Location settings will need to be changed to accomplish this, as well as changes to the IFCBacquire settings file; details on IFCBacquire settings that need changing are in the IFCB field manual.
 
   - Navigate to the **Location** tab and under **Global settings** on the left **Enable Location services** from the dropdown menu.
@@ -218,7 +222,7 @@ If a wired internet connection is not available on-site. A modem/router such as 
 
 - To change the password to log into ACEmanager navigate to the **Admin tab** > **Change password**. Enter old password and new password. **Apply changes.**![ChangePasswd](README.assets/ChangePasswd-16303369824083-16306070395381.png)
 
-Notes 1: If using an AT&T SIM card the APN (Access Point name) will need to be set to “i2gold”. It is important to have a SIM card with a static IP enabled from the provider. This setting can be checked under the **WAN/Cellular tab > Cellular > SIM slot 1** configuration. These settings are provided by the SIM card provider and if the APN is not automatically entered from the SIM card the provider will have details about the APN and SIM PIN.
+Notes 1: If using an AT&T SIM card the APN (Access Point name) will need to be set to “i2gold”. This setting can be checked under the **WAN/Cellular tab > Cellular > SIM slot 1** configuration. These settings are provided by the SIM card provider and if the APN is not automatically entered from the SIM card the provider will have details about the APN and SIM PIN.
 
 ![SIM APN](README.assets/SIM APN.PNG)
 
@@ -238,7 +242,7 @@ Notes 2: If using a different provider than AT&T, a different radio module firmw
 
   The master configuration file will apply all the necessary changes to assign IP addresses and ports to the IFCB and UPS. The Wi-Fi will need to be enabled and the Wi-Fi name and passphrase can be changed/set. 
 
-- **Reboot the MP70 to apply all changes**. Disconnect Ethernet cable from computer/laptop and log in to the MP70 remotely (using the LAN IP address and port number) or locally (by connecting to the Wi-Fi network and using the WAN IP address and port number). The first time this connection is attempted on a browser, an error message might be received, click on **Advanced** and then on **Proceed to IP address (unsafe)**.
+- **Reboot the MP70 to apply all changes**. Disconnect Ethernet cable from computer/laptop and log in to the MP70 remotely (using the LAN IP address and port number 9443) or locally (by connecting to the Wi-Fi network and using the WAN IP address). The first time this connection is attempted on a browser, an error message might be received, click on **Advanced** and then on **Proceed to IP address (unsafe)**.
 
   ![Error](README.assets/Error.PNG)
 
@@ -252,15 +256,15 @@ If using a backup power source like a UPS with a network management card it can 
 ![UPS_APC_https ports](README.assets/UPS_APC_https ports.PNG)
 
 - Reboot the UPS and network by shutting down, unplugging the battery and unplugging the cord of the UPS from the outlet, and restarting to save these settings.
--  To set up email alerts for significant events from the UPS, navigate to the **Configure tab** > **Network** >**DNS** and set up the DNS settings for the mail server of your choice. See Fig. 12 for DNS settings for a gmail server. The DNS settings will need to be set up for the email server from which the notification emails will be sent.
+-  To set up email alerts for significant events from the UPS, navigate to the **Configure tab** > **Network** >**DNS** and set up the DNS settings for the mail server of your choice. See for DNS settings for a gmail server. The DNS settings will need to be set up for the email server from which the notification emails will be sent.
 
 ![UPS DNS settings](README.assets/UPS DNS settings.PNG)
 
-- Navigate to **Configuration** > **Notification** > **Email** > **Server**. Under **From Address** fill in a user name for gmail to send the email from (this needs to be an existing gmail account). Use SMTP settings available online for setting up the server, i.e. SMTP server address and port number. **Authentication** has to be **enabled** to use gmail servers, and an existing gmail account and password will need to be entered in those fields. The UPS will use the gmail servers to send notification or alert emails from that email address. **Apply settings**.
+- Navigate to **Configuration** > **Notification** > **Email** > **Server**. Under **From Address** fill in a user name for Gmail to send the email from (this needs to be an existing Gmail account, you may want to create a new account for this). Use SMTP settings available online for setting up the server, i.e. SMTP server address and port number. **Authentication** has to be **enabled** to use Gmail servers, and an existing Gmail account and password will need to be entered in those fields. The UPS will use the Gmail servers to send notification or alert emails from that email address. **Apply settings**.
 
 ![UPS email set up](README.assets/UPS email set up.PNG)
 
-- To set up email addresses to send notifications to, navigate to **Configuration** > **Notification** > **Email** > **Recipients**. **Enable generation** and **enter the email address of the recipient** (multiple email addresses can be added one at a time on this page). **Apply settings**. To test these settings navigate to **Configuration** > **Notification** > **Email** > Test by selecting **initiate test email to the recipient(s) of choice**. The first notification email may go to the spam folder of the recipient instead of the inbox.
+- To set up email addresses to send notifications to, navigate to **Configuration** > **Notification** > **Email** > **Recipients**. **Enable generation** and **enter the email address of the recipient** (This must be different from the email address sending the notifications in the earlier step, or the notifications end up in spam mail. Muliple email addresses can be entered here). **Apply settings**. To test these settings navigate to **Configuration** > **Notification** > **Email** > Test by selecting **initiate test email to the recipient(s) of choice**. The first notification email may go to the spam folder of the recipient instead of the inbox.
 
 ![Email recipients](README.assets/Email recipients.PNG)
 
@@ -310,7 +314,7 @@ If using a backup power source like a UPS with a network management card it can 
 
   ![Adding VNC ports](README.assets/Adding VNC ports.PNG)
 
-- ·Make sure the IFCB Ethernet cable is plugged into the router. Make sure you are connected to the router either wirelessly through wi-fi or wired through an Ethernet connection.
+- Make sure the IFCB Ethernet cable is plugged into the router. Make sure you are connected to the router either wirelessly through Wi-Fi or wired through an Ethernet connection.
 
 ## 4.5. Canning the IFCB
 
@@ -328,7 +332,7 @@ If using a backup power source like a UPS with a network management card it can 
 
 - Navigate to the **Hardware** tab and make a note of the humidity and temperature inside the IFCB. Make sure the syringes have been set to zero, reconnect the silicone tubing to intake and outlet and provide a waste container for exhausting the rest of the sample, let the rest of the sample run and shutdown the software and IFCB.
 
-- Move around the screw ring to align the screws on the endcap with their housing. Use Aquashield around screws and use a torque wrench to tighten the screws to 62 ft-lb in a star pattern.
+- Move around the screw ring to align the screws on the endcap with their housing. Use Aquashield around screws and use a torque wrench to tighten the screws to 62 in-lb in a star pattern.
 
 - Attach sacrificial anode to bottom of IFCB housing, with a plastic spacer between the anode and the aluminum housing of the IFCB and a small amount of Aquashield on the bolt of the anode. Tighten with a wrench.
 
@@ -350,7 +354,7 @@ If using a backup power source like a UPS with a network management card it can 
 
   ## 5.1. Dockside submerged deployment                                                                                                                                                               
 
-- A NEMA 4 certified junction box has been fitted with shark fin antennae (attached to outside of box, with a port drilled into the side of the box for the cables to pass through), and ports fitted with cable glands that allow snaking the IFCB power cable out of the box, but with rubber stoppers/electrical tape around the cable gland to keep the box as weather proof as possible (Fig. 18). The junction box can sit outside on the dock itself if the temperature is not expected to drop below 0℃ or above 40℃ (if using a backup power source inside it). The NEMA-4 box is capable of protecting the contents from falling dirt, rain, sleet, snow, windblown dust, splashing water, and hose-directed water and will be undamaged by the external formation of ice on the enclosure.
+- A NEMA 4 certified junction box has been fitted with shark fin antennae (attached to outside of box, with a port drilled into the side of the box for the cables to pass through), and ports fitted with cable glands that allow snaking the IFCB power cable out of the box, but with rubber stoppers/electrical tape around the cable gland to keep the box as weather proof as possible. The junction box can sit outside on the dock itself if the temperature is not expected to drop below 0℃ or above 40℃ (if using a backup power source inside it). The NEMA-4 box is capable of protecting the contents from falling dirt, rain, sleet, snow, windblown dust, splashing water, and hose-directed water and will be undamaged by the external formation of ice on the enclosure.
 - The MP70 is capable of withstanding -20℃ to 60℃ temperatures, but should be kept away from moisture if possible. The power source for the IFCB is very sensitive to moisture and will experience a short circuit if directly exposed to water. It should be kept away from the walls of the junction box to prevent getting any condensation on it. 
 
 ![IMG_20200204_161338](README.assets/IMG_20200204_161338-16305143396801.jpg)
@@ -425,7 +429,7 @@ If using a backup power source like a UPS with a network management card it can 
 
 - Logging into the IFCB: The username of all IFCBs is set to "ifcb" by default and the password to log into them is set to the serial number assigned to the IFCB. Remote desktop requires the IP address of the IFCB (LAN/WAN), the username (ifcb), as well as the serial number (MLXXXXX-01) to log in. VNC only requires the IP address (WAN/LAN) and serial number password to log in.
 
-  - LAN connection: When connected directly to the MP70 using wired/wireless connection. Use local IP address 192.168.13.xxx to connect to the IFCB over Remote Desktop/VNC  (setting up the IP address for IFCBs is detailed in section 4.2).
+  - LAN connection: When connected directly to the MP70 using wired/wireless connection. Use local IP address 192.168.13.xxx to connect to the IFCB over Remote Desktop/VNC.  
 
   - WAN connection: When not connected to the MP70 locally or when you are remote to the site of the MP70, connect using remote desktop/VNC with the IP address associated with SIM card used in Modem with port number assigned to IFCB, e.g. 166.xxx.xx.42:(IFCB external port number).
   
@@ -461,7 +465,7 @@ If using a backup power source like a UPS with a network management card it can 
 
   ![Camera](README.assets/Camera.png)
 
-- Start acquiring samples and note the fps rate in the **Camera** tab. It should be between 0.2-0.8 in ambient water that is not experiencing a bloom. Look at the ROIs in the Camera window and make sure they are well focused. Focus can be adjusted by very small increments using the **focus** **motor** controls in the Hardware tab. Use the Large step << and >> icons to move in one direction at a time to adjust focus.
+- Start acquiring samples and note the fps rate in the **Camera** tab. Look at the roi triggers in the Activity pane adjust the PMTB voltage until you are getting a 0 blob every 15-20 blobs, this is usually is the range of 0.65 to 0.75 volts. Look at the ROIs in the Camera window and make sure they are well focused. Focus can be adjusted by very small increments using the **focus** **motor** controls in the Hardware tab. Use the Large step << and >> icons to move in one direction at a time to adjust focus.
 
   ![Hardware tab_Focus  motor](README.assets/Hardware tab_Focus  motor.png)
 
@@ -511,7 +515,7 @@ If using a backup power source like a UPS with a network management card it can 
 
   ![Hardware tab_on+off](README.assets/Hardware tab_on+off.jpg)
 
-- Navigate to the **Fluids** tab and check if **Refill after debubble and debubble with sample** are selected. Check if **sample volume** to is set to **5.0** and **Beads interval**     to **60**. If making any     changes in this tab make sure to click **Set** to apply changes.
+- Navigate to the **Fluids** tab and check if **Refill after debubble and debubble with sample** are selected. Check if **sample volume** to is set to **5.0** and **Beads interval** to **60**. If making any changes in this tab make sure to click **Set** to apply changes.
 
   ![Fluids settings](README.assets/Fluids settings.jpg)
 
@@ -582,7 +586,7 @@ If using a backup power source like a UPS with a network management card it can 
 - Make sure to wait for acquisition to finish or “**Stop acquisition**” or the sample file will not be saved. Set **# syringes** to **0** and close IFCBacquire using the emergency stop button.
 - Turn off IFCB from the start menu.
 
-- Follow the steps in the Mclane labs manual for long-term storage of the IFCB without sampling to avoid water stains on the flow cell or salt buildup.
+- Follow the steps in the McLane labs manual for long-term storage of the IFCB without sampling to avoid water stains on the flow cell or salt buildup.
 
 # 7. IFCB routine assessment, daily check-ins
 
