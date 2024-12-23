@@ -79,6 +79,8 @@ The following specific configuration approaches are used by our group for differ
 
 \-    Access to a continuous power supply
 
+\-    Ability to toggle power supply
+
 \-    Access to an internet connection/ cell phone connectivity
 
 Specific configuration approaches are used by our group to suit individual deployments, and additional instrumentation associated with the IFCB can be used to make the IFCB suitable for the site.
@@ -154,6 +156,8 @@ If a wired internet connection is not available on-site a modem/router such as a
 
   Shutdown the IFCB and disconnect from monitor. Connect using a remote connection through VNC and make sure the IFCB is not experiencing "small window VNC connection" issues. This issue sometimes shows up after several reboots of the system and can be fixed by attaching a small dongle on the VGA connector of the IFCB, and is available from McLane labs on request.
 
+  Note: For Versalogic CPUs introduced in 2024 by McLane and for NVIDIA CPUs used by Brosnahan lab from 2023 there is an HDMI connection to use for monitor connection so there is no "small window" problem any more. For NVIDIA CPUs the USB connection on the board needs to be taped in place so the reagent bags do not disconnect power to the board.
+
 
 ## 4.2. Cellular modem set up
 
@@ -171,7 +175,7 @@ If a wired internet connection is not available on-site a modem/router such as a
 
 ![MP70 IP reservation_edited](README.assets/MP70 IP reservation_edited.png)
 
-- A port number needs to be assigned to the IFCB and other equipment being used with the MP70, such as a backup power source. To add/check these settings navigate to the **Security tab** > **Port forwarding**. Select **DMZ host enabled** > **Automatic, Port forwarding** > **Enable**. Select **TCP & UDP** from drop down menu under **Protocol**.
+- A port number needs to be assigned to the IFCB and other equipment being used with the MP70, such as a backup power source or digital logger switch. To add/check these settings navigate to the **Security tab** > **Port forwarding**. Select **DMZ host enabled** > **Automatic, Port forwarding** > **Enable**. Select **TCP & UDP** from drop down menu under **Protocol**.
 - Assign a port number to each local IP address that was added in the last step. Note: For ease of identification we use the last 3 digits of the local IP address for the public port number of an assigned equipment. 
   - Remote desktop requires TCP port 3389 to be open.
 
@@ -315,7 +319,13 @@ If using a backup power source like a UPS with a network management card it can 
 
 - Make sure the IFCB Ethernet cable is plugged into the router. Make sure you are connected to the router either wirelessly through Wi-Fi or wired through an Ethernet connection.
 
-## 4.5. Canning the IFCB
+## 4.5. Digital logger switch setup for remote power toggling
+
+The ability to togglw power to the IFCB and other accessories remotely is a useful tool when setting up on minimally monitored applications such as cruises of opportunity. We have used digital logger switches with DHCP capabilities to be able to access the power switch of the IFCB on the network setup of the modem being used. Digital logger switches have a MAC address that can be added to the IP address page of SW modems (see setup in section 4.2.1.).
+http://www.digital-loggers.com/lpc.html
+
+
+## 4.6. Canning the IFCB
 
 - Once the IFCB is ready for canning connect to the IFCB using Windows Remote Desktop Connection. 
 
