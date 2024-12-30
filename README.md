@@ -205,7 +205,7 @@ If a wired internet connection is not available on-site a modem/router such as a
 
 - It is important to limit incoming connections to the MP70-- there are many hacking attempts in form of bots that scan the internet for login pages and choke the bandwidth with login attempts. This can be done by navigating to the **Security tab** > **Trusted IPs- Inbound (Friends**). Select **Enable** in the dropdown menu next to **Inbound Trusted IP Mode**. Enter a range of IP addresses representing the network IPs you will be using to access the MP70/IFCB/Backup UPS. Click **Apply**.
 
-  ![Trusted IP](README.assets/Trusted IP.PNG)
+  ![Trusted IP](README.assets/Trusted_IP.PNG)
 
 - IFCBacquire in Linux is capable of getting a GPS fix from the MP70. Location settings will need to be changed to accomplish this, as well as changes to the IFCBacquire settings file; details on IFCBacquire settings that need changing are in the IFCB field manual.
 
