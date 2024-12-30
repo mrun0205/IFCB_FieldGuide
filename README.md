@@ -580,6 +580,33 @@ http://www.digital-loggers.com/lpc.html
 
   ![index file](README.assets/index_file.jpg)
 
+### 6.1.3. Basic Operations using Dockerized IFCBacquire with "headless" CPU (NVIDIA, Versalogic, ADLink with WHOI IFCBacquire + PhytO-ARM image)
+
+The containerized version of IFCBacquire can be cloned and installed from https://github.com/WHOIGit/Dockerized-IFCBacquire 
+The docker container contains the IFCBacquire Linux OS 3.0 build released by McLane Labs in 2024 and once installed will contain the same 3 components of Host, Server and WebUI. The "headless" CPU refers to a Linux Ubuntu 10 OS that can be navigated using command line and has no graphics user interface (GUI). 
+
+IFCBacquire does not natively start upon startup of the OS. Instead once a connection has been made to the IFCB (either using an IP address and an ssh connection or using a connected monitor and mouse), the software needs to be started in a Tmux session in order to keep the IFCBacquire host and server on when navigating away from the software to use other components of the OS. A Tmux cheatsheet can be found here: https://tmuxcheatsheet.com/ A description of what Tmux is can be found here: https://tmuxcheatsheet.com/how-to-install-tmux/
+
+- Log into the IFCB using an ssh connection and password from Terminal if using Mac or WSL (Windows subsystem for Linux) if using Windows
+   ```
+  ssh ifcb@128.128.191.xxx
+  ```
+- Start a new Tmux session by typing and hitting return
+   ```
+  tmux new -s ifcbacq
+  ```
+  This will open a tmux window which can now be used to start IFCBacquire and look at the Host commands. In the tmux window type the following to start IFCBacquire and hit return at the end of each line of code
+   ```
+  cd Dockerised_IFCBacquire
+  ./run.sh 
+  ```
+- Once the host window is up and running IFCBAcquire's webUI can now be accessed from a computer with a GUI. To disconnect from the Tmux session and keep it running in the back ground use ctrl+b+d. This will take you back to the command line interface of the ifcb folder on the IFCB. 
+- Open the webUI browser window on the computer you are connected to and follow instructions in 6.1.2 for basic use of IFCBacquire.
+- To stop IFCBacquire stop sampling in the IFCBacquire webUI or PhytO-ARM command line and run a few bleach and biocide routines from IFCBacquire webUI. Then in the terminal/wsl connect to the IFCB using an ssh connection and use the following
+   ```
+  tmux kill-session -t ifcbacq
+  ```   
+
 ## 6.2. Stopping the IFCB after sampling
 
 - Cleaning should be performed each time the IFCB has been used for an extended period of time, or between sampling different environments to avoid carryover. To clean the instrument run the following steps twice, repeating for each pump that was in use for samping. Note: Make sure the intake tube is submerged in fluid or appropriate salinity (or MQ water) since the IFCB will need fluid for flushing after a run of cleaning agents.
