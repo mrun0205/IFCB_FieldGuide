@@ -173,27 +173,27 @@ If a wired internet connection is not available on-site a modem/router such as a
 
 - Navigate to the **LAN tab** to see the **Reservation list** of the MP70 and add the MAC address of your IFCB (and backup power supply if using) to the reservation list. Assign a local IP address starting from 192.168.13.100 to 192.168.13.200 to each of the devices that will be used with the MP70. **Apply changes.** Note: For ease of identification we use the IFCB number assigned to each IFCB by McLane labs as the last 3 digits of the IP address**. Apply changes.**
 
-![MP70 IP reservation_edited](README.assets/MP70 IP reservation_edited.png)
+![MP70 IP reservation_edited](README.assets/MP70_IP_reservation_edited.png)
 
 - A port number needs to be assigned to the IFCB and other equipment being used with the MP70, such as a backup power source or digital logger switch. To add/check these settings navigate to the **Security tab** > **Port forwarding**. Select **DMZ host enabled** > **Automatic, Port forwarding** > **Enable**. Select **TCP & UDP** from drop down menu under **Protocol**.
 - Assign a port number to each local IP address that was added in the last step. Note: For ease of identification we use the last 3 digits of the local IP address for the public port number of an assigned equipment. 
   - Remote desktop requires TCP port 3389 to be open.
 
-![](README.assets/MP70 port_edited-16303365965341-16306071261172.png)
+![](README.assets/MP70_port_edited-16303365965341-16306071261172.png)
 
 - - VNC requires private port 5900  to be open, and the host-server set up of IFCBacquire requires port 8092 to be set as public and private start ports. The appropriate ports  will need to be assigned to IP assigned to the IFCB depending on the remote client you are using. 
 
-![Linux ports](README.assets/Linux ports.PNG)
+![Linux ports](README.assets/Linux_ports.PNG)
 
 - - For the Schneider APC UPS, the default public start port for encrypted (https) use is 5000, and it can be assigned to the IP address that was assigned to the MAC address of the UPS in the previous step, The private port number can be any number greater than 0. **Apply changes**.
 
-    ![MP70 security settings](README.assets/MP70 security settings.PNG)
+    ![MP70 security settings](README.assets/MP70_security_settings.PNG)
 
 - To enable both HTTP and HTTPS access navigate to the **Security tab** > Both **HTTP and HTTPS** under **Remote access and Local access**, **apply changes**. Note the port number beside “HTTP port” and “HTTPS” port. The default WAN IP address of all the MP70s is the same: 192.168.13.31. To access the IFCB through local connection use the local IP address assigned to the IFCB along with the port number under HTTP, to access the IFCB remotely use the IP address of the MP70 ending with the port number under HTTPS assigned to the IFCB. **Apply changes.**
 
 - To enable both HTTP and HTTPS access navigate to the **Security tab** > Both **HTTP and HTTPS** under **Remote access and Local access**, **apply changes**. Note the port number beside “HTTP port” and “HTTPS” port. The default WAN IP address of all the MP70s is the same: 192.168.13.31. To access the IFCB through local connection use the local IP address assigned to the IFCB along with the port number under HTTP, to access the IFCB remotely use the IP address of the MP70 ending with the port number under HTTPS assigned to the IFCB. **Apply changes.**
 
-![Https http](README.assets/Https http.PNG)
+![Https http](README.assets/Https_http.PNG)
 
 - **Wi-fi** access can be set up to use the cellular network of the MP70, access the MP70 locally, and to set a passcode to limit user access of cellular data. Navigate to the **Wi-Fi** tab and set **Mode** to **Access Point (LAN)**
 
@@ -211,23 +211,23 @@ If a wired internet connection is not available on-site a modem/router such as a
 
   - Navigate to the **Location** tab and under **Global settings** on the left **Enable Location services** from the dropdown menu.
 
-  ![Acemanager GPS settings](../IFCB_Comms_Telemetry/README.assets/Acemanager GPS settings.PNG)
+  ![Acemanager GPS settings](README.assets/Acemanager_GPS_settings.PNG)
 
   - Navigate to **Server 1** on the left and expand Report Type. Select "**User defined NMEA**" in the dropdown menu next to **Location Report Format** and **Enable** next to **GGA**
 
-  ![GPS settings IMPORTANT](../IFCB_Comms_Telemetry/README.assets/GPS settings IMPORTANT.PNG)
+  ![GPS settings IMPORTANT](README.assets/GPS_settings_IMPORTANT.PNG)
 
   - Expand Server under the same tab and not the **Report Server 1 Port Number**. This number, usually **22335** will need to be used in the **Settings file** of **IFCBacquire** when using the **Linux OS** to get a GPS location tag for every file the IFCB makes.
 
 - **Reboot the MP70 to apply all changes**. Disconnect Ethernet cable from computer/laptop and log in to the MP70 remotely (using the LAN IP address and port number), locally (by connecting to the Wi-Fi network and using the WAN IP address and port number). The first time this connection is attempted on a browser, an error message might be received, click on **Advanced** and then on **Proceed to IP address (unsafe)** 
 
-![Acemanager GPS settings2](README.assets/Acemanager GPS settings2.PNG)
+![Acemanager GPS settings2](README.assets/Acemanager_GPS_settings2.PNG)
 
 - To change the password to log into ACEmanager navigate to the **Admin tab** > **Change password**. Enter old password and new password. **Apply changes.**![ChangePasswd](README.assets/ChangePasswd-16303369824083-16306070395381.png)
 
 Notes 1: If using an AT&T SIM card the APN (Access Point name) will need to be set to “i2gold”. This setting can be checked under the **WAN/Cellular tab > Cellular > SIM slot 1** configuration. These settings are provided by the SIM card provider and if the APN is not automatically entered from the SIM card the provider will have details about the APN and SIM PIN.
 
-![SIM APN](README.assets/SIM APN.PNG)
+![SIM APN](README.assets/SIM_APN.png)
 
 Notes 2: If using a different provider than AT&T, a different radio module firmware may need to be installed. Instructions on how to do this can be found on the Sierra Wireless page https://source.sierrawireless.com/resources/airlink/software_downloads/mp70/mp70-firmware-list/#sthash.sorWOSrs.dpbs
 
@@ -241,7 +241,7 @@ Notes 2: If using a different provider than AT&T, a different radio module firmw
 
 - Click load template and select **choose file**, select the provided master configuration file from wherever it is saved on the computer, and click **Upload**. Reboot unit after the master configuration file is uploaded.
 
-  ![MP70 template](README.assets/MP70 template.PNG)
+  ![MP70 template](README.assets/MP70_template.PNG)
 
   The master configuration file will apply all the necessary changes to assign IP addresses and ports to the IFCB and UPS. The Wi-Fi will need to be enabled and the Wi-Fi name and passphrase can be changed/set. 
 
@@ -261,21 +261,21 @@ If using a backup power source like a UPS with a network management card it can 
 - Reboot the UPS and network by shutting down, unplugging the battery and unplugging the cord of the UPS from the outlet, and restarting to save these settings.
 -  To set up email alerts for significant events from the UPS, navigate to the **Configure tab** > **Network** >**DNS** and set up the DNS settings for the mail server of your choice. See for DNS settings for a gmail server. The DNS settings will need to be set up for the email server from which the notification emails will be sent.
 
-![UPS DNS settings](README.assets/UPS DNS settings.PNG)
+![UPS DNS settings](README.assets/UPS_DNS_settings.PNG)
 
 - Navigate to **Configuration** > **Notification** > **Email** > **Server**. Under **From Address** fill in a user name for Gmail to send the email from (this needs to be an existing Gmail account, you may want to create a new account for this). Use SMTP settings available online for setting up the server, i.e. SMTP server address and port number. **Authentication** has to be **enabled** to use Gmail servers, and an existing Gmail account and password will need to be entered in those fields. The UPS will use the Gmail servers to send notification or alert emails from that email address. **Apply settings**.
 
-![UPS email set up](README.assets/UPS email set up.PNG)
+![UPS email set up](README.assets/UPS_email_set_up.PNG)
 
 - To set up email addresses to send notifications to, navigate to **Configuration** > **Notification** > **Email** > **Recipients**. **Enable generation** and **enter the email address of the recipient** (This must be different from the email address sending the notifications in the earlier step, or the notifications end up in spam mail. Muliple email addresses can be entered here). **Apply settings**. To test these settings navigate to **Configuration** > **Notification** > **Email** > Test by selecting **initiate test email to the recipient(s) of choice**. The first notification email may go to the spam folder of the recipient instead of the inbox.
 
-![Email recipients](README.assets/Email recipients.PNG)
+![Email recipients](README.assets/Email_recipients.PNG)
 
 - To set up the specific notifications that email recipients can get emails about navigate to **Configuration** > **Notification** > **Event actions** > **By Group**. Select the events you need notifications for and follow the steps for selecting the severity of events, frequency of notifications, and email recipients to notify. 
 
-![email logging 3](README.assets/email logging 3.PNG)
+![email logging 3](README.assets/email_logging_3.PNG)
 
-![email logging 4](README.assets/email logging 4.PNG)
+![email logging 4](README.assets/email_logging_4.PNG)
 
 ## 4.4. Router set up (For offshore cruise deployment or when connection to internet is not possible)
 
@@ -285,25 +285,25 @@ If using a backup power source like a UPS with a network management card it can 
 
 - After connecting you laptop, login to the router configuration page. In a browser page, go to: **192.168.1.1** 
 
-  ![Advanced attached devies](README.assets/Advanced attached devies.PNG)
+  ![Advanced attached devies](README.assets/Advanced_attached_devies.PNG)
 
 - Click on the **Advanced** tab and then **Administration** and then **Attached Devices**. Any pre-set devices will show up under **Wired or Wireless devices**. 
 
-  ![Advanced attached devies2](README.assets/Advanced attached devies2.jpg)
+  ![Advanced attached devies2](README.assets/Advanced_attached_devies2.jpg)
 
 - To add new device click on **Access Control** in the upper right corner. 
 
-  ![Access control- add devices](README.assets/Access control- add devices.PNG)
+  ![Access control- add devices](README.assets/Access_control- add_devices.PNG)
 
 - Under Access Rules make sure “**Add all new devices to connect**” is selected. Below this will appear a list of all devices that are currently allowed to connect. If your device does not appear in this menu click on **Add**.
 
-  ![Add new devices landing page](README.assets/Add new devices landing page.PNG)
+  ![Add new devices landing page](README.assets/Add_new_devices_landing_page.png)
 
 - On the next page add the MAC address of your device and set a device name for your device. Click **Apply** 
 
 - Navigate to the **WPS wizard tab> Setup> LAN setup** and click on **Add** 
 
-  ![LAN reservation MAC address](README.assets/LAN reservation MAC address.PNG)
+  ![LAN reservation MAC address](README.assets/LAN_reservation_MAC_address.PNG)
 
 - Set an IP address in the range of **192.168.1.2** to**192.168.1.255** for your device, enter the MAC address and Device name ![LAN reservation2](README.assets/LAN reservation2.PNG)and click **Add.** 
 
@@ -315,7 +315,7 @@ If using a backup power source like a UPS with a network management card it can 
 
 - Set **5800-5900** under **external starting port** and **internal starting port** and name the **Service “VNC**”. **Save changes** and exit out of the router browser page. The router is now set up for use with the IFCB. 
 
-  ![Adding VNC ports](README.assets/Adding VNC ports.PNG)
+  ![Adding VNC ports](README.assets/Adding_VNC_ports.PNG)
 
 - Make sure the IFCB Ethernet cable is plugged into the router. Make sure you are connected to the router either wirelessly through Wi-Fi or wired through an Ethernet connection.
 
@@ -386,13 +386,13 @@ http://www.digital-loggers.com/lpc.html
 - The communication/power cable should be routed from the NEMA-4 enclosure to the IFCB, with minimal kinks and twists and excess length should be coiled and ziptied.
 - A hose with filter setup, similar to the one used in the shipboard setup can be used to attach the intake and outlet tubes of the IFCB to it. 
 
-![Wetlab install](README.assets/Wetlab install.jpg)
+![Wetlab install](README.assets/Wetlab_install.jpg)
 
 - One end of the hose should be submerged in and secured to a container being pumped continuously with water from the sampling source and the other end of the hose can be secured to pump the exhaust to an appropriate drain. 
 
 - When experiencing a bloom or when there is too much large debris in the seawater flow through, a sediment filter (https://www.amazon.com/dp/B008Y2O8AY?psc=1&ref=ppx_yo2_dt_b_product_detailscan) can be modified and plumbed with IFCB PEEK tubing fitted with an intake mesh filter and used as a first filter to preserve the more delicate nitex mesh filter tip on the intake from damage.
 
-  ![IFCB_Bowdoin setup](README.assets/IFCB_Bowdoin setup.jpeg)
+  ![IFCB_Bowdoin setup](README.assets/IFCB_Bowdoin_setup.jpeg)
 
   <img src="README.assets/IFCB_Bowdoin setup2-16305196608543.jpeg" alt="IFCB_Bowdoin setup2" style="zoom:25%;" />
 
@@ -424,7 +424,7 @@ http://www.digital-loggers.com/lpc.html
 
 - Vibrations, shocks, and the IFCB sampling air due to unplanned shut down of the seawater flow through systems are the largest concerns on board research vessels. Some other concerns are availability of space for power and communications equipment. With strategic placement the total footprint of the IFCB can be reduced to 1 sq ft.
 
-  ![Cruise install](README.assets/Cruise install-16305209450116.jpg)
+  ![Cruise install](README.assets/Cruise_install-16305209450116.jpg)
 
 - Once the IFCB has been secured and the seawater has been overflowing out of the bottle with the hose secured in it follow instructions in “Starting up the IFCB” on starting up and monitoring the IFCB. 
 
@@ -454,19 +454,19 @@ http://www.digital-loggers.com/lpc.html
 
 - Navigate to the **Hardware** tab and note the **humidity and temperature**. This will have changed after transport from the lab.
 
-  ![Hardware tab_temphu](README.assets/Hardware tab_temphu.jpg)
+  ![Hardware tab_temphu](README.assets/Hardware_tab_temphu.jpg)
 
 - In the **Hardware** tab check the PMT settings: PMTA should be set to 0.45-0.65, PMTB should be set to 0.45-0.70. Trig A and Trig B should be set between 0.120- 0.140. These settings are very subjective to the environment being sampled, and also on the laser/PMT hardware individual to each instrument. The settings should be set to a range that is giving uniform PMT signals across the flow cell and producing a zero ROI every 12-15 triggers.
 
-  ![Hardware tab_PMT settings](README.assets/Hardware tab_PMT settings.png)
+  ![Hardware tab_PMT settings](README.assets/Hardware_tab_PMT settings.png)
 
 - In the **Hardware** tab check if the **Laser, Camera and Pump 1 or 2** are set to **ON** and set to 14 v/24 v depending on the age of the pump motors. Check if **Flashlamp** is set to **ON**.
 
-  ![Hardware tab_Laser](README.assets/Hardware tab_Laser-16306084224393.png)
+  ![Hardware tab_Laser](README.assets/Hardware_tab_Laser-16306084224393.png)
 
 - Navigate to the **Fluids** tab and check if **Active, Refill after debubble and debubble with sample** are selected. Set sample volume to 5.0 and Beads interval to 60.
 
-  ![Fluids tab](README.assets/Fluids tab.PNG)
+  ![Fluids tab](README.assets/Fluids_tab.PNG)
 
 - Navigate to the **Camera** tab and set **# syringes** to appropriate number (10,000 if long term sampling, sampling at the rate of ~60 samples/day). Select **Output files, Debug and Blob analysis**.
 
@@ -476,7 +476,7 @@ http://www.digital-loggers.com/lpc.html
 
 - Start acquiring samples and note the fps rate in the **Camera** tab. Look at the roi triggers in the Activity pane adjust the PMTB voltage until you are getting a 0 blob every 15-20 blobs, this is usually is the range of 0.65 to 0.75 volts. Look at the ROIs in the Camera window and make sure they are well focused. Focus can be adjusted by very small increments using the **focus** **motor** controls in the Hardware tab. Use the Large step << and >> icons to move in one direction at a time to adjust focus.
 
-  ![Hardware tab_Focus  motor](README.assets/Hardware tab_Focus  motor.png)
+  ![Hardware tab_Focus  motor](README.assets/Hardware_tab_Focus_motor.png)
 
 - Navigate to the **Hardware** tab and note the humidity and temperature for the duration of two samples. The temperature inside the IFCB will fall/rise according to the ambient temperature, but should not change more than a few units post-canning. Uncheck **View Images** after monitoring flow and images for a few samples to free up processing speed.  
 
@@ -490,7 +490,7 @@ http://www.digital-loggers.com/lpc.html
 
 - The IFCBacquire software in Linux has three main components: the server, Host, and the WebUI
 
-  ![Linux IFCBacquire](README.assets/Linux IFCBacquire.png)
+  ![Linux IFCBacquire](README.assets/Linux_IFCBacquire.png)
 
 - Once the IFCB is secured in place and continuous water supply has been ensured follow the instructions below.
 
@@ -508,7 +508,7 @@ http://www.digital-loggers.com/lpc.html
 
   - Open a browser window on a laptop connected to the Wi-Fi network of the browser and use the IP address of the router: 192.168.1.1 to connect to the Router where you can check if the IFCB is on the network. 
 
-    ![Landing page](README.assets/Landing page.PNG)
+    ![Landing page](README.assets/Landing_page.PNG)
 
 - The IFCB will have started up in the Linux OS. Open VNC on the same laptop to connect to the IFCB using the IP address i.e. http://192.168.1.xxx, and the password which is the serial number assigned by McLane (i.e. MLxxxxx-01), which is printed on the top of the IFCB.
 
@@ -518,25 +518,25 @@ http://www.digital-loggers.com/lpc.html
 
 - Navigate to the **Hardware** tab and note the **humidity and temperature**. This will have changed after transport from the lab. Also make sure the **Live** button above humidity and temp is not highlighted since this makes the software die. The software updates the temperature and humidity readings every minute or so. Both of these readings are relative to the initial readings and will fluctuate according to the external temperature, and temperature of the water being samples. If temperature exceeds 35C the IFCB should be turned off as this can damage the CPU. If humidity rises more than 10% from initial reading it might indicate a leak in the reagent bags/syringe/internal fluidics and the IFCB should be monitored. Turn off the IFCB if humidity exceeds 60%.
 
-  ![Hardware tab_T+H](README.assets/Hardware tab_T+H.jpg)
+  ![Hardware tab_T+H](README.assets/Hardware_tab_T+H.jpg)
 
 - In the **Hardware** tab check if the **Laser, Camera and Pump 1 or 2** are set to **ON**. Check if **Flashlamp** is set to **ON**. Only one pump should be on at any given time, the other one is designated as the back up pump.
 
-  ![Hardware tab_on+off](README.assets/Hardware tab_on+off.jpg)
+  ![Hardware tab_on+off](README.assets/Hardware_tab_on+off.jpg)
 
 - Navigate to the **Fluids** tab and check if **Refill after debubble and debubble with sample** are selected. Check if **sample volume** to is set to **5.0** and **Beads interval** to **60**. If making any changes in this tab make sure to click **Set** to apply changes.
 
-  ![Fluids settings](README.assets/Fluids settings.jpg)
+  ![Fluids settings](README.assets/Fluids_settings.jpg)
 
 - Set **Samples** to appropriate number (10,000 is upper limit, sampling at the rate of ~60 samples/day when sampling volume is set to 5 ml). Click **set**.
 
-  ![Sample num](README.assets/Sample num.jpg)
+  ![Sample num](README.assets/Sample_num.jpg)
 
 - Start acquiring samples by clicking on **Start acquisition**. Make sure the intake and exhaust lines are submerged in sampling water before hitting start.
 
   If setting up a dockside submerged IFCB at this point lower the IFCB into the water and secure vertically at appropriate height to ensure that it remains submerged even at low tide.
 
-  ![Start acqui](README.assets/Start acqui.jpg)
+  ![Start acqui](README.assets/Start_acqui.jpg)
 
 - Navigate to **View** and **select Images, Triggers, Valve, Activity, Syringe**. When selected these will be highlighted blue and the Camera view screen will show images of ROIs once the IFCB starts sampling after a 3 minute debubble run. 
 
@@ -570,15 +570,15 @@ http://www.digital-loggers.com/lpc.html
 
 - If using GPS location in conjunction with a pre-configured MP70 (see cell modem setup) open the settings file from the main IFCBacquire window or from the IFCBacquire Host folder. Scroll to the bottom of the file to find the GPSFeed setting and edit it from 0 to 1:22335. Confirm from the MP70 AceManager that the "Report Server 1 Port number" is 22335, if not then use the port number the modem is assigning. Save and close file, reboot IFCB. 
 
-  ![GPS settings file](README.assets/GPS settings file.PNG)
+  ![GPS settings file](README.assets/GPS_settings_file.PNG)
   
 - Open the **Hardware** tab on IFCBacquire click on **Other** and click on **Get**. The IFCB should be getting a GPS location from the Modem.
 
-  ![IFCBacquire GPS settings](README.assets/IFCBacquire GPS settings.PNG)
+  ![IFCBacquire GPS settings](README.assets/IFCBacquire_GPS_settings.PNG)
   
 - If using the index file to connect to the IFCB, open the index file on the laptop that is connected to the router wi-fi and use the IP address and port number 8092 as **Server**. e.g. for our router this will be http://192.xxx.x.xx5:8092 and IFCB number xxx. Then click on **connect**. The index file looks identical to the WebUI, but having both connected to the IFCB at once can cause it to crash.
 
-  ![index file](README.assets/index file.jpg)
+  ![index file](README.assets/index_file.jpg)
 
 ## 6.2. Stopping the IFCB after sampling
 
@@ -667,7 +667,7 @@ http://www.digital-loggers.com/lpc.html
 
 ## **Issue: Sudden spike in image files on dashboard, duplicate images, same spot being captured as ROI:**
 
-<img src="README.assets/Example bad imaging.png" alt="Example bad imaging" style="zoom:50%;" /><img src="README.assets/Sudden spike.png" alt="Sudden spike" style="zoom:50%;" />
+<img src="README.assets/Example_bad_imaging.png" alt="Example bad imaging" style="zoom:50%;" /><img src="README.assets/Sudden_spike.png" alt="Sudden spike" style="zoom:50%;" />
 
 Solution: Clean the flow cell
 
@@ -763,13 +763,13 @@ Note: Need gloves for some of this, since the valve is connected to sample, dete
 
 5. Make sure syringe has been zeroed and carefully remove syringe. Follow instructions in manual to remove syringe if unsure).
 
-   ![Valve change_2](README.assets/Valve change_2.jpg)
+   ![Valve change_2](README.assets/Valve_change_2.jpg)
 
 6. Put on gloves. Take off two big screws connecting the valve to the IFCB and carefully take it out.
 
 7. Use valve tool to inspect the valve. The tool fits into the back of valve and you can turn the tool to feel how smooth/rough the ceramic plate and valve connections are. If it feels rough there may be an issue with the ball bearings or ceramic plate inside the valve. Mclane is working on whether you can replace the parts inside the valve rather than replacing the whole valve. When there are particulates stuck in the valve it may be because you are not running enough bleach/biocide cycles, or the mesh cover on the intake is not very effective, or it is just getting old. 
 
-   ![Valve inside1](README.assets/Valve inside1.png)
+   ![Valve inside1](README.assets/Valve_inside1.png)
 
 8. If replacing the valve put O-rings in all the valve connections (A-H) in the new valve and tamp down using a screw-in connector or similar tool. This is just to make sure the rings do not fall out before the connectors can get screwed back on. IMPORTANT: Push pressurized air through the valve intake and make sure the air is coming out of the G connection. You may need to use the valve tool to realign the valve to make sure the air is blowing strongly out of the G-connection. If the air blows out of any other connection the valve will not fit in place, if the air blows out of the C-connection all the connections will be flipped and the IFCB will push wrong fluids into wrong connections. 
 
