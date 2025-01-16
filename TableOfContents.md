@@ -22,36 +22,37 @@
 
 [3.1. Considerations for deployment](https://github.com/mrun0205/IFCB_FieldGuide/tree/main#31-considerations-for-deployment)
    
-   [IFCB communication cable](https://github.com/mrun0205/IFCB_FieldGuide/tree/main#ifcb-communication-cable)
+[IFCB communication cable](https://github.com/mrun0205/IFCB_FieldGuide/tree/main#ifcb-communication-cable)
    
-   [Instrument buoyancy](https://github.com/mrun0205/IFCB_FieldGuide/tree/main#instrument-buoyancy)
+[Instrument buoyancy](https://github.com/mrun0205/IFCB_FieldGuide/tree/main#instrument-buoyancy)
    
-   [Anodization](https://github.com/mrun0205/IFCB_FieldGuide/tree/main#anodization)
+[Anodization](https://github.com/mrun0205/IFCB_FieldGuide/tree/main#anodization)
    
-   [Bio-fouling](https://github.com/mrun0205/IFCB_FieldGuide/tree/main#bio-fouling)
+[Bio-fouling](https://github.com/mrun0205/IFCB_FieldGuide/tree/main#bio-fouling)
    
-   [Connectivity for data transfer]()
-
-[4. IFCB – setting up for installation]()
-
-[4.1. Pre-canning check]()
-
-[4.2. Cellular modem set up]()
-
-[4.2.1. New MP70 set up]()
-
-[4.2.2. Setting up the MP70 with a pre-configured template file]
-   
-[4.3. Backup power setup: APC Smart-UPS 1500VA LCD with network card 2]()
-   
-[4.4. Router set up: For offshore cruise deployment or when connection to internet is not possible]()
-   
-[4.5. Digital logger switch setup for remote power toggling]()
-   
-[4.6. Canning the IFCB](https://github.com/mrun0205/IFCB_FieldGuide/tree/main#connectivity-for-data-transfer)
+[Connectivity for data transfer](https://github.com/mrun0205/IFCB_FieldGuide/tree/main#connectivity-for-data-transfer)
 
 
-[5. IFCB Field setup types](https://github.com/mrun0205/IFCB_FieldGuide/tree/main#4-ifcb--setting-up-for-installation)
+[4. IFCB – setting up for installation](https://github.com/mrun0205/IFCB_FieldGuide/tree/main#4-ifcb--setting-up-for-installation)
+
+[4.1. Pre-canning check](https://github.com/mrun0205/IFCB_FieldGuide/tree/main#41-pre-canning-check)
+
+[4.2. Cellular modem set up](https://github.com/mrun0205/IFCB_FieldGuide/tree/main#42-cellular-modem-set-up)
+
+[4.2.1. New MP70 set up](https://github.com/mrun0205/IFCB_FieldGuide/tree/main#421-new-mp70-set-up)
+
+[4.2.2. Setting up the MP70 with a pre-configured template file](https://github.com/mrun0205/IFCB_FieldGuide/tree/main#422-setting-up-the-mp70-with-a-pre-configured-template-file)
+   
+[4.3. Backup power setup: APC Smart-UPS 1500VA LCD with network card 2](https://github.com/mrun0205/IFCB_FieldGuide/tree/main#43-backup-power-setup-apc-smart-ups-1500va-lcd-with-network-card-2)
+   
+[4.4. Router set up: For offshore cruise deployment or when connection to internet is not possible](https://github.com/mrun0205/IFCB_FieldGuide/tree/main#44-router-set-up-for-offshore-cruise-deployment-or-when-connection-to-internet-is-not-possible)
+   
+[4.5. Digital logger switch setup for remote power toggling](https://github.com/mrun0205/IFCB_FieldGuide/tree/main#45-digital-logger-switch-setup-for-remote-power-toggling)
+   
+[4.6. Canning the IFCB](https://github.com/mrun0205/IFCB_FieldGuide/tree/main#46-canning-the-ifcb)
+
+
+[5. IFCB Field setup types](https://github.com/mrun0205/IFCB_FieldGuide/tree/main#5-ifcb-field-setup-types)
    
 [5.1. Dockside submerged deployment](https://github.com/mrun0205/IFCB_FieldGuide/tree/main#51-dockside-submerged-deployment)
    
