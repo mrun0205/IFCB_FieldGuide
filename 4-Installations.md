@@ -116,7 +116,7 @@
 
 Notes 1: If using an AT&T SIM card the APN (Access Point name) will need to be set to “i2gold”. This setting can be checked under the **WAN/Cellular tab > Cellular > SIM slot 1** configuration. These settings are provided by the SIM card provider and if the APN is not automatically entered from the SIM card the provider will have details about the APN and SIM PIN.
 
-![SIM APN](README.assets/SIM_APN.png)
+![SIM_APN](README.assets/SIM_APN.png)
 
 Notes 2: If using a different provider than AT&T, a different radio module firmware may need to be installed. Instructions on how to do this can be found on the Sierra Wireless page https://source.sierrawireless.com/resources/airlink/software_downloads/mp70/mp70-firmware-list/#sthash.sorWOSrs.dpbs
 
@@ -130,7 +130,7 @@ Notes 2: If using a different provider than AT&T, a different radio module firmw
 
 - Click load template and select **choose file**, select the provided master configuration file from wherever it is saved on the computer, and click **Upload**. Reboot unit after the master configuration file is uploaded.
 
-  ![MP70 template](README.assets/MP70_template.PNG)
+  ![MP70_template](README.assets/MP70_template.PNG)
 
   The master configuration file will apply all the necessary changes to assign IP addresses and ports to the IFCB and UPS. The Wi-Fi will need to be enabled and the Wi-Fi name and passphrase can be changed/set. 
 
