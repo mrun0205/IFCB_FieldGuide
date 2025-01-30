@@ -182,7 +182,7 @@ If using a backup power source like a UPS with a network management card it can 
 
 - To add new device click on **Access Control** in the upper right corner. 
 
-  ![Access control- add devices](README.assets/Access_control_add_devices.PNG)
+  ![Access control add devices](README.assets/Access_control_add_devices.PNG)
 
 - Under Access Rules make sure “**Add all new devices to connect**” is selected. Below this will appear a list of all devices that are currently allowed to connect. If your device does not appear in this menu click on **Add**.
 
