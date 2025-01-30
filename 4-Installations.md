@@ -116,7 +116,7 @@
 
 Notes 1: If using an AT&T SIM card the APN (Access Point name) will need to be set to “i2gold”. This setting can be checked under the **WAN/Cellular tab > Cellular > SIM slot 1** configuration. These settings are provided by the SIM card provider and if the APN is not automatically entered from the SIM card the provider will have details about the APN and SIM PIN.
 
-![SIM_APN](README.assets/SIM_APN.png)
+![SIMAPN](README.assets/SIM_APN.PNG)
 
 Notes 2: If using a different provider than AT&T, a different radio module firmware may need to be installed. Instructions on how to do this can be found on the Sierra Wireless page https://source.sierrawireless.com/resources/airlink/software_downloads/mp70/mp70-firmware-list/#sthash.sorWOSrs.dpbs
 
