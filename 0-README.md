@@ -1,4 +1,4 @@
-This repository contains a series of markdown files detailing some field applications, deployment techniques, installation guids, basic operator steps and common issues associated with IFCBs. These files are part of a living document and reflect the standard operating practices used by the Brosnahan Lab in conjunction with the PhytO-ARM mode of operation. A detailed guide to PhytO-ARM use and implementation can be found [here](https://github.com/WHOIGit/PhytO-ARM)
+This repository contains a series of markdown files detailing some field applications, deployment techniques, installation guides, basic operator steps and common issues associated with IFCBs. These files are part of a living document and reflect the standard operating practices used by the Brosnahan Lab in conjunction with the PhytO-ARM mode of operation. A detailed guide to PhytO-ARM use and implementation can be found [here](https://github.com/WHOIGit/PhytO-ARM)
 
 The table of conetents below can be used to navigate to specific parts of the field guide.
 
